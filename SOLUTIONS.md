@@ -1,8 +1,9 @@
 ## Group Members
 ### Please follow the format-> Student 1: Name of student (Student ID)
-- Student 1:
-- Student 2:
-- Student 3:
-- Student 4:
+- Student 1: Lucy Lu ()
+- Student 2: Charles Vong ()
+- Student 3: Jay YuJie Zuo (1002530077)
+- Student 4: Jenny Zhang () 
 
 ## Project Description:
+Using the [Universities List API](https://github.com/Hipo/university-domains-list) to create a website that provide a platform for students to rate their courses.
