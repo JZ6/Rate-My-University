@@ -1,7 +1,7 @@
 ## Group Members
 ### Please follow the format-> Student 1: Name of student (Student ID)
 - Student 1: Lucy Lu (1002295349)
-- Student 2: Charles Vong ()
+- Student 2: Charles Vong (1002430960)
 - Student 3: Jay YuJie Zuo (1002530077)
 - Student 4: Jenny (Yi Jia) Zhang (1000729134) 
 
