@@ -3,7 +3,7 @@
 - Student 1: Lucy Lu (1002295349)
 - Student 2: Charles Vong ()
 - Student 3: Jay YuJie Zuo (1002530077)
-- Student 4: Jenny Zhang () 
+- Student 4: Jenny (Yi Jia) Zhang (1000729134) 
 
 ## Project Description:
 Using the [Universities List API](https://github.com/Hipo/university-domains-list) to create a website that provide a platform for students to rate their courses.
