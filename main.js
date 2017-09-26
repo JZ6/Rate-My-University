@@ -17,6 +17,15 @@ var app = {
 		 * 
 		 * @return array of items
 		 */
+		const request = require('request')
+		request.get('http://universities.hipolabs.com/search?country=Canada', function (err,res, body) {
+            		if(err){
+                		return cb(error)
+            		}else{
+                		let data = JSON.parse(body)
+                		cb(null,data)
+			}
+        	})
 	},
 
 	getOneItemById: function() {
@@ -35,3 +44,11 @@ var app = {
 		 */	
 	},	
 }
+
+/*Testing
+
+app.getListsOfItems(function(error, data){
+   console.log(data)
+});
+
+*/
