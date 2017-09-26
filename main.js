@@ -11,7 +11,7 @@
  */
 
 var app = {
-	getListsOfItems: function() {
+	getListsOfItems: function(cb) {
 		/*
 		 * Returns a list of items from the API.
 		 * 
