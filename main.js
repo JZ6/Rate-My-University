@@ -48,12 +48,23 @@ var app = {
     },
 
 
-	getOneAttributeFromItem: function() {
+	getOneAttributeFromItem: function(name, attribute, cb) {
 		/*
 		 * Returns a single attribute from a given item.
 		 * 
 		 * @return a string
 		 */	
+        let url_beg = 'http://universities.hipolabs.com/search?name='
+        let url_end = name
+        const request = require('request')
+        request.get(url_beg.concat(url_end), function (err, res, body) {
+            if (err) {
+                return cb(error)
+            } else {
+                let data = JSON.parse(body)
+                cb(null, data[0][attribute])
+            }
+        })
 	},	
 }
 
@@ -65,5 +76,7 @@ app.getListsOfItems(function(error, data){
 app.getOneItemById('Ashton College', function(error, data){
 	console.log(data)
 })
-
+app.getOneAttributeFromItem('St. Francis Xavier University', 'web_page', function(error, data){
+    console.log(data)
+})
 
