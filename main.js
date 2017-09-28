@@ -69,7 +69,7 @@ var app = {
 }
 
 
-
+/*
 app.getListsOfItems(function(error, data){
    console.log(data)
 })
@@ -80,3 +80,4 @@ app.getOneAttributeFromItem('St. Francis Xavier University', 'web_page', functio
     console.log(data)
 })
 
+*/
