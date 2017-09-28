@@ -28,13 +28,25 @@ var app = {
         	})
 	},
 
-	getOneItemById: function() {
-		/*
-		 * Returns single item given single id
-		 * 
-		 * @return Item
-		 */	
-	},
+    getOneItemById: function (name, cb) {
+        /*
+         * Returns single item given single id
+         *
+         * @return Item
+         */
+        let url_beg = 'http://universities.hipolabs.com/search?name='
+		let url_end = name
+        const request = require('request')
+        request.get(url_beg.concat(url_end), function (err, res, body) {
+            if (err) {
+                return cb(error)
+            } else {
+                let data = JSON.parse(body)
+                cb(null, data[0])
+            }
+        })
+    },
+
 
 	getOneAttributeFromItem: function() {
 		/*
@@ -45,10 +57,13 @@ var app = {
 	},	
 }
 
-/*Testing
+
 
 app.getListsOfItems(function(error, data){
    console.log(data)
-});
+})
+app.getOneItemById('Ashton College', function(error, data){
+	console.log(data)
+})
 
-*/
+
