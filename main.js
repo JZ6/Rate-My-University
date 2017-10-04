@@ -11,73 +11,80 @@
  */
 
 var app = {
-	getListsOfItems: function(cb) {
+	getListsOfItems: function() {
 		/*
 		 * Returns a list of items from the API.
 		 * 
 		 * @return array of items
 		 */
-		const request = require('request')
-		request.get('http://universities.hipolabs.com/search?country=Canada', function (err,res, body) {
-            		if(err){
-                		return cb(error)
-            		}else{
-                		let data = JSON.parse(body)
-                		cb(null,data)
-			}
-        	})
+		return new Promise(function(resolve, reject){
+            const request = require('request')
+            request.get('http://universities.hipolabs.com/search?country=Canada', function (err,res, body) {
+                if(err){
+                    return cb(error)
+                }else{
+                    let data = JSON.parse(body)
+					if(data){
+                        console.log(data)
+					}
+					resolve(data);
+                }
+            })
+		})
+
 	},
 
-    getOneItemById: function (name, cb) {
+    getOneItemById: function (name) {
         /*
          * Returns single item given single id
          *
          * @return Item
          */
-        let url_beg = 'http://universities.hipolabs.com/search?name='
-		let url_end = name
-        const request = require('request')
-        request.get(url_beg.concat(url_end), function (err, res, body) {
-            if (err) {
-                return cb(error)
-            } else {
-                let data = JSON.parse(body)
-                cb(null, data[0])
-            }
-        })
+        return new Promise(function(resolve, reject){
+            let url_beg = 'http://universities.hipolabs.com/search?name='
+            let url_end = name
+            const request = require('request')
+            request.get(url_beg.concat(url_end), function (err, res, body) {
+                if (err) {
+                    return cb(error)
+                } else {
+                    let data = JSON.parse(body)
+					if(data){
+                        resolve(data[0])
+					}
+                }
+            })
+		})
+
     },
 
 
-	getOneAttributeFromItem: function(name, attribute, cb) {
+	getOneAttributeFromItem: function(name, attribute) {
 		/*
 		 * Returns a single attribute from a given item.
 		 * 
 		 * @return a string
-		 */	
-        let url_beg = 'http://universities.hipolabs.com/search?name='
-        let url_end = name
-        const request = require('request')
-        request.get(url_beg.concat(url_end), function (err, res, body) {
-            if (err) {
-                return cb(error)
-            } else {
-                let data = JSON.parse(body)
-                cb(null, data[0][attribute])
-            }
-        })
+		 */
+		return new Promise(function(resolve, reject){
+            let url_beg = 'http://universities.hipolabs.com/search?name='
+            let url_end = name
+            const request = require('request')
+            request.get(url_beg.concat(url_end), function (err, res, body) {
+                if (err) {
+                    return cb(error)
+                } else {
+                    let data = JSON.parse(body)
+					if(data){
+                       resolve(data[0][attribute])
+					}
+                }
+            })
+		})
+
 	},	
 }
-
-
-/*
-app.getListsOfItems(function(error, data){
-   console.log(data)
-})
-app.getOneItemById('Ashton College', function(error, data){
-	console.log(data)
-})
-app.getOneAttributeFromItem('St. Francis Xavier University', 'web_page', function(error, data){
-    console.log(data)
+Promise.all([app.getListsOfItems(), app.getOneItemById('Ashton College'),
+	app.getOneAttributeFromItem('St. Francis Xavier University', 'web_page')]).then(allResolves => {
+		console.log(allResolves)
 })
 
-*/
