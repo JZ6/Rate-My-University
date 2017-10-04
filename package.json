@@ -1,0 +1,23 @@
+{
+  "name": "assignment-1-get-restful",
+  "version": "1.0.0",
+  "description": "Due Date: October 6",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FallCSC309/assignment-1-get-restful.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FallCSC309/assignment-1-get-restful/issues"
+  },
+  "homepage": "https://github.com/FallCSC309/assignment-1-get-restful#readme",
+  "dependencies": {
+    "request": "^2.83.0"
+  }
+}
