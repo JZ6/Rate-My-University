@@ -3,10 +3,9 @@
 <html lang="en-CA	">
 	<head>
 		<meta charset="utf-8">
-		<title>University of Toronto Course Ratings</title>
+		<title>University Ratings</title>
 		<meta name="description" content="Course Ratings">
 		<meta name="author" content="JZ">
-		<link rel="stylesheet" href="css/styles.css?v=1.0">
 		<style>
 			.dropbtn {
 			background-color: #1CE;
@@ -43,36 +42,36 @@
 		</style>
 	</head>
 	<body>
-		<h1>University of Toronto Course Ratings</h1>
-		<label>Enter the course code or select by department / year:
-		<input name="CourseCode" list="courses" /></label>
-		<datalist id="courses"></datalist>
+		<h1>University Ratings</h1>
+		<label>Enter the name of the Univeristy or select by location:
+		<input name="Uni Name" list="unis" /></label>
+		<datalist id="unis"></datalist>
 		<script type="text/javascript">
-			var currentcourses = new Array();
-			currentcourses[0]='CSC';
-			currentcourses[1]='MAT';
+			var currentunis = new Array();
+			currentunis[0]='CSC';
+			currentunis[1]='MAT';
 			<!-- Get list of course from json file or api. -->
 			
 			
-			var courselist = '';
+			var unilist = '';
 			
-			for(var i = 0; i < currentcourses.length; i++)
-			  courselist  += '<option value="'+ currentcourses[i]+'" />';
+			for(var i = 0; i < currentunis.length; i++)
+				unilist  += '<option value="'+ currentunis[i]+'" />';
 			
-			document.getElementById('courses').innerHTML = courselist;
+			document.getElementById('unis').innerHTML = unilist;
 		</script>
 		<p>
-			<label> Department: </label>
+			<label> Country: </label>
 			<select>
-				<option value="volvo">Computer Science</option>
-				<option value="saab">Mathematics</option>
-				<option value="mercedes">Physics</option>
+				<option value="volvo">Canada</option>
+				<option value="saab"><China/option>
+				<option value="mercedes">Japan</option>
 			</select>
 		</p>
 		<p>
 		<div class="dropdown">
-			<button onclick="yearselect()" class="dropbtn">Year of Study</button>
-			<div id="yearlist" class="dropdown-content">
+			<button onclick="continentselect()" class="dropbtn">Continent</button>
+			<div id="conlist" class="dropdown-content">
 				<a href="#">1</a>
 				<a href="#">2</a>
 				<a href="#">3</a>
@@ -82,8 +81,8 @@
 		</p>
 		<script>
 			/*toggle dropdown content on click */
-			function yearselect() {
-			    document.getElementById("yearlist").classList.toggle("show");
+			function continentselect() {
+			    document.getElementById("conlist").classList.toggle("show");
 			}
 			
 			// Close the dropdown if clicked outside
@@ -101,6 +100,6 @@
 			  }
 			}
 		</script>
-		<a href="coursetemplate.html">Course Templates</a>
+		<a href="uni template.html">Uni page Templates</a>
 	</body>
 </html>
