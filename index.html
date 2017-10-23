@@ -1,1 +1,106 @@
-Hello World!
+
+<!doctype html>
+<html lang="en-CA	">
+	<head>
+		<meta charset="utf-8">
+		<title>University of Toronto Course Ratings</title>
+		<meta name="description" content="Course Ratings">
+		<meta name="author" content="JZ">
+		<link rel="stylesheet" href="css/styles.css?v=1.0">
+		<style>
+			.dropbtn {
+			background-color: #1CE;
+			color: white;
+			padding: 16px;
+			font-size: 16px;
+			border: none;
+			cursor: pointer;
+			}
+			.dropbtn:hover, .dropbtn:focus {
+			background-color: #1CE;
+			}
+			.dropdown {
+			position: relative;
+			display: inline-block;
+			}
+			.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			min-width: 160px;
+			overflow: auto;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			z-index: 1;
+			}
+			.dropdown-content a {
+			color: black;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+			}
+			.dropdown a:hover {background-color: #f1f1f1}
+			.show {display:block;}
+		</style>
+	</head>
+	<body>
+		<h1>University of Toronto Course Ratings</h1>
+		<label>Enter the course code or select by department / year:
+		<input name="CourseCode" list="courses" /></label>
+		<datalist id="courses"></datalist>
+		<script type="text/javascript">
+			var currentcourses = new Array();
+			currentcourses[0]='CSC';
+			currentcourses[1]='MAT';
+			<!-- Get list of course from json file or api. -->
+			
+			
+			var courselist = '';
+			
+			for(var i = 0; i < currentcourses.length; i++)
+			  courselist  += '<option value="'+ currentcourses[i]+'" />';
+			
+			document.getElementById('courses').innerHTML = courselist;
+		</script>
+		<p>
+			<label> Department: </label>
+			<select>
+				<option value="volvo">Computer Science</option>
+				<option value="saab">Mathematics</option>
+				<option value="mercedes">Physics</option>
+			</select>
+		</p>
+		<p>
+		<div class="dropdown">
+			<button onclick="yearselect()" class="dropbtn">Year of Study</button>
+			<div id="yearlist" class="dropdown-content">
+				<a href="#">1</a>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+			</div>
+		</div>
+		</p>
+		<script>
+			/*toggle dropdown content on click */
+			function yearselect() {
+			    document.getElementById("yearlist").classList.toggle("show");
+			}
+			
+			// Close the dropdown if clicked outside
+			window.onclick = function(event) {
+			  if (!event.target.matches('.dropbtn')) {
+			
+			    var dropdowns = document.getElementsByClassName("dropdown-content");
+			    var i;
+			    for (i = 0; i < dropdowns.length; i++) {
+			      var openDropdown = dropdowns[i];
+			      if (openDropdown.classList.contains('show')) {
+			        openDropdown.classList.remove('show');
+			      }
+			    }
+			  }
+			}
+		</script>
+		<a href="coursetemplate.html">Course Templates</a>
+	</body>
+</html>
