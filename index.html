@@ -43,14 +43,15 @@
 	</head>
 	<body>
 		<h1>University Ratings</h1>
-		<label>Enter the name of the Univeristy or select by location:
+		<label>Enter the Country the University is in:
 		<input name="Uni Name" list="unis" /></label>
 		<datalist id="unis"></datalist>
 		<script type="text/javascript">
 			var currentunis = new Array();
-			currentunis[0]='CSC';
-			currentunis[1]='MAT';
-			<!-- Get list of course from json file or api. -->
+			currentunis[0]='Canada';
+			currentunis[1]='China';
+			currentunis[1]='Korea';
+			<!-- Get list of conutries from api. -->
 			
 			
 			var unilist = '';
@@ -63,19 +64,20 @@
 		<p>
 			<label> Country: </label>
 			<select>
-				<option value="volvo">Canada</option>
-				<option value="saab"><China/option>
-				<option value="mercedes">Japan</option>
+				<option value="CAN">Canada</option>
+				<option value="CHN"><China/option>
+				<option value="JAP">Japan</option>
 			</select>
 		</p>
 		<p>
 		<div class="dropdown">
-			<button onclick="continentselect()" class="dropbtn">Continent</button>
+			<button onclick="continentselect()" class="dropbtn">Univeristies</button>
 			<div id="conlist" class="dropdown-content">
 				<a href="#">1</a>
 				<a href="#">2</a>
 				<a href="#">3</a>
 				<a href="#">4</a>
+				// Fill unilist in from api
 			</div>
 		</div>
 		</p>
