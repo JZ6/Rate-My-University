@@ -105,7 +105,8 @@
     /*toggle dropdown content on click */
     function continentselect() {
         document.getElementById("getlist").innerHTML = "Universities in " + document.getElementById("country").value;
-        var requrl = 'https://cors-anywhere.herokuapp.com/http://universities.hipolabs.com/search?country=canada'
+        var requrl = 'https://cors-anywhere.herokuapp.com/' + 'http://universities.hipolabs.com/search?country=' + document.getElementById("country").value;
+
         $.ajax({
             type: 'GET',
             url: requrl,
