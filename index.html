@@ -7,23 +7,13 @@
 		<meta name="description" content="Course Ratings">
 		<meta name="author" content="JZ">
 		<style>
-			.center {
-    				margin: auto;
-    				width: 60%;
-    				border: 3px solid #73AD21;
-    				padding: 10px;
-			}
-			.dropbtn {
-			background-color: #1CE;
-			color: white;
-			padding: 16px;
-			font-size: 16px;
-			border: none;
-			cursor: pointer;
-			}
-			.dropbtn:hover, .dropbtn:focus {
-			background-color: #1CE;
-			}
+			div.center{
+				height: 10em;
+				display: flex;
+				align-items: center;
+				justify-content: center }
+			div.center p {
+				margin: 0 }
 			.dropdown {
 			position: relative;
 			display: inline-block;
@@ -48,23 +38,28 @@
 		</style>
 	</head>
 	<body>
-		<h1 style= "background-color: #1CE" class="center">University Ratings</h1>
+	<div class=center style= "background-color: #1CE">
+		<h1>University Ratings</h1>
+	</div>
+	<div class=center>
+
 		<label class="center">Enter the Country the University is in:
+
 		<input name="Uni Name" list="unis" /></label>
 		<datalist id="unis"></datalist>
 		<script type="text/javascript">
 			var currentunis =  ["Canada", "United States","US","Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
-			
-			
+
+
 			var unilist = '';
-			
+
 			for(var i = 0; i < currentunis.length; i++)
 				unilist  += '<option value="'+ currentunis[i]+'" />';
-			
+
 			document.getElementById('unis').innerHTML = unilist;
 		</script>
-	
-		</p>
+	</div>
+		<p>
 		<div class="dropdown" style="text-align:center;">
 			<button onclick="continentselect()" class="dropbtn" class="center">Univeristies</button>
 			<div id="conlist" class="dropdown-content">
@@ -76,17 +71,17 @@
 			</div>
 		</div>
 		</p>
-        
+
 		<script>
 			/*toggle dropdown content on click */
 			function continentselect() {
 			    document.getElementById("conlist").classList.toggle("show");
 			}
-			
+
 			// Close the dropdown if clicked outside
 			window.onclick = function(event) {
 			  if (!event.target.matches('.dropbtn')) {
-			
+
 			    var dropdowns = document.getElementsByClassName("dropdown-content");
 			    var i;
 			    for (i = 0; i < dropdowns.length; i++) {
