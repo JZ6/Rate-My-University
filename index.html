@@ -24,6 +24,15 @@
             font-size: 1.2em;
         }
 
+
+		.twocontainer {
+			display: none;
+		}
+		
+		.threecontainer {
+			display: none;
+		}
+		
         #searchcenter {
             margin-left: auto;
             margin-right: auto;
@@ -112,7 +121,164 @@
         .show {
             display: block;
         }
+		
+		/* second page css */
+		
+		#view2 {
+        width: 100%;
+        clear: both;
+      }
 
+      #info-pane{
+        float: left;
+        width: 40%;
+        height: inherit;
+
+      }
+      #review-pane {
+        float: right;
+        width: 60%;
+        height: inherit;
+      }
+
+      #bkg-img-container {
+        display: inline-block;
+        position: relative;
+        max-width: 100%;
+        height: auto;
+      }
+      #bkg-img-container img{
+        max-width: 100%;
+        height: auto;
+        opacity: 0.7;
+      }
+      #uni-name {
+        position: absolute;
+        font-style: "Helvetica" "sans serif";
+        font-size: 4em;
+        bottom: 65%;
+        left: 5%;
+        color: white;
+      }
+
+      #uni-name span {
+        background-color: rgba(0 ,0, 0, 0.6);
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      #uni-info-wiki {
+        bottom: 40%;
+        position: absolute;
+        font-size: 1.3em;
+        margin: 10%;
+        color:white;
+      }
+
+      #uni-info-wiki span {
+        background-color: rgba(0 ,0, 0, 0.5);
+        padding-left: 10px;
+        padding-right: 10px;
+        letter-spacing: 1px;
+      }
+
+      #course-preview h3 {
+        font-size: 3em;
+        margin-left: 3%;
+        text-align: center;
+      }
+
+      #button-container {
+        text-align: center;
+        width: 100%;
+      }
+
+      #button-container button {
+        display:block;
+        padding:3% 10%;
+        margin: 5% 15% 20% 15%;
+        font-size: 2.5em;
+      }
+
+      .course {
+        width: 90%;
+        background-color: lightblue;
+        height: auto;
+        margin-left: 5%;
+        margin-bottom: 2%;
+        padding: 1%;
+      }
+      .course h4{
+        font-size: 1.8em;
+        margin:auto;
+      }
+
+      .course p{
+        font-size: 1em;
+        margin-left: 2%;
+      }
+
+      .quote {
+        font-size: 1em;
+        font-style: italic;
+        color: black;
+        margin-bottom: 1%;
+        text-align: center;
+      }
+      body {
+          margin: 0px;
+          height: 100%;
+      }
+      
+      /* third page css */
+        div.center {
+            height: 10em;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        #review {
+            width: 50%;
+            padding: 10px 10px;
+            text-align: left;
+            background-color: lightblue;
+            margin-top: 10px;
+            margin-left: 15px;
+        }
+
+        .checked {
+            color: orange;
+        }
+
+        .CSC108 {
+            display: none;
+        }
+
+        .CSC309 {
+            display: none;
+        }
+
+        .CSC411 {
+            display: none;
+        }
+
+        button {
+            background-color: #242f96;
+            border: none;
+            color: white;
+
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 100px;
+        }
+		
+		
+		
     </style>
 </head>
 <body>
@@ -152,6 +318,10 @@
 
     <ul id="conlist" class="dropdown-content">
     </ul>
+    
+    <script>
+    	$("#twocontainer").hide();
+    </script>
 
     <script type="text/javascript">
         var currentunis = ["Canada", "United States", "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cruise Ship", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyz Republic", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre &amp; Miquelon", "Samoa", "San Marino", "Satellite", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "St Kitts &amp; Nevis", "St Lucia", "St Vincent", "St. Lucia", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad &amp; Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks &amp; Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"];
@@ -166,6 +336,7 @@
 
     <script>
         /*toggle dropdown content on click */
+        
         function uniselect() {
             document.getElementById("getlist").innerHTML = "Universities in " + document.getElementById("country").value;
             var requrl = 'https://cors-anywhere.herokuapp.com/' + 'http://universities.hipolabs.com/search?country=' + document.getElementById("country").value;
@@ -176,15 +347,20 @@
                 success: function (data) {
 
                     $('#conlist').empty();
-
                     $.each(JSON.parse(data), function (i, uni) {
-                        $('#conlist').append('<li><a href="javascript:;" data-theme="b" data-role="button" class=center >' + uni.name + '</a></li>');
+                    	var newButton = '<li><a href="javascript:;" data-theme="b" data-role="button" class=center >' + uni.name + '</a></li>';
+                        $('#conlist').append(newButton);
                     })
                 }
             });
-
-            document.getElementById("conlist").classList.show("show");
+            $(document).on("click", "a.center", function(){
+            	$(".container").hide();
+            	$(".twocontainer").show();
+            });
+            //document.getElementById("conlist").classList.show("show");
         }
+        
+
 
         function namelookup() {
             var input, filter, ul, li, a, i;
@@ -202,7 +378,186 @@
                 }
             }
         }
+        
     </script>
+    
+
+    
+    	
+ });
+</div>
+
+<!-- Second view -->
+<div class=twocontainer>
+	<div id="view2">
+          <div id="info-pane">
+                  <div id="bkg-img-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Uoft_conhall.jpg">
+                    <div id="uni-text">
+                      <h3 id="uni-name"> <span> Filler Name </span></h3>
+                      <p id="uni-info-wiki"> <span> Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Nulla risus nunc, finibus
+                        sed aliquet ut, eleifend in risus. Mauris elit massa,
+                        tincidunt sit amet erat convallis, posuere varius arcu.
+                        Integer sed justo vel odio varius tincidunt non et est.
+                        Fusce convallis, sem in varius venenatis, lorem turpis
+                        lacinia ligula, quis tincidunt lectus sem ut metus.
+                        Donec sed elit viverra, commodo elit ut, mollis est. </span>
+                      </p>
+                    </div>
+                  </div>
+          </div>
+          <div id="review-pane">
+            <div id="course-preview">
+              <h3> Courses </h3>
+              <div class="course">
+                <h4> CSC148 </h4>
+                <p>Abstract data types and data structures for implementing
+                  them. Linked data structures. Encapsulation and
+                  information-hiding. Object-oriented programming.
+                  Specifications. Analyzing the efficiency of programs.
+                  Recursion. </p>
+                  <p class="quote">"Would not wish this course upon my worst enemy..."</p>
+                  <p class="quote">"pretty good course. kinda useful. "</p>
+              </div>
+              <div class="course">
+                <h4> MGY200 </h4>
+                <p>Introduction to the modern era of genetics and microbiology,
+                  and its impact on human health.  Topical biological problems
+                  and cutting-edge scientific approaches with examples from
+                  world-class Toronto labs.  Topics include: combating HIV;
+                   emerging and recurring microbial threats; repairing spinal
+                   cord injury; cancer biology; power of stem cells; fountain
+                   of youth.</p>
+                   <p class="quote">"Super nice prof! Don't buy the textbook."</p>
+              </div>
+              <div class="course">
+                <h4> PSY420 </h4>
+                <p>Examination in depth of a limited topic within social
+                  psychology. </p>
+
+                <p class="quote">"Only take this course if it's with Sheila!!!"</p>
+              </div>
+
+            </div>
+            <div id=button-container>
+              <button id="to-view3" type='button'> See more reviews </button>
+            </div>
+          </div>
+          
+          <script>
+          	$("#button-container").click(function() {
+          		$(".twocontainer").hide();
+            	$(".threecontainer").show();
+          	});
+          </script>
+  </div>
+</div>
+
+<!-- Third view -->
+<div class=threecontainer>
+	<div class=center style="background-color: #1CE">
+    	<h1>Ratings and Reviews</h1>
+	</div>
+
+<!-- display top 3 courses -->
+	<h3> Check out our top 3 courses! </h3>
+
+	<button id="button309" href="#">CSC309</button>
+	<span class="fa fa-star checked"></span>
+	<span class="fa fa-star checked"></span>
+	<span class="fa fa-star checked"></span>
+	<span class="fa fa-star checked"></span>
+	<span class="fa fa-star checked"></span>
+	<div class="CSC309" id="review">Loved this course. Thought it was really helpful.</div>
+	<div class="CSC309" id="review">Nice prof</div>
+	<br>
+
+	<button id="button108" href="#">CSC108</button>
+	<span class="fa fa-star checked"></span>
+	<span class="fa fa-star checked"></span>
+	<span class="fa fa-star checked"></span>
+	<span class="fa fa-star checked"></span>
+	<span class="fa fa-star"></span>
+	<div class="CSC108" id="review">bird course</div>
+	<div class="CSC108" id="review">nice intro to programming</div>
+	<br>
+
+	<button id="button411" href="#">CSC411</button>
+	<span class="fa fa-star checked"></span>
+	<span class="fa fa-star checked"></span>
+	<span class="fa fa-star checked"></span>
+	<span class="fa fa-star"></span>
+	<span class="fa fa-star"></span>
+	<div class="CSC411" id="review">Hated everything about it</div>
+
+	<script>
+    $("#button108").click(function () {
+        $(".CSC108").toggle();
+    });
+
+    $("#button309").click(function () {
+        $(".CSC309").toggle();
+    });
+
+    $("#button411").click(function () {
+        $(".CSC411").toggle();
+    });
+	</script>
+
+
+	<h3> Or choose from our entire list of courses </h3>
+
+	<script type="text/javascript">
+    function dropdownTip(value) {
+        console.log("hi");
+        document.getElementById("result").innerHTML = "No reviews yet";
+    }
+	</script>
+
+	<select id="selectMe">
+    	<option value="choose">choose</option>
+    	<option value="CSC148">CSC148</option>
+    	<option value="CSC209">CSC209</option>
+	</select>
+
+<!-- some harded-coded reviews, only for A2 -->
+	<div class="CSC148 Addon" id="review">Liked it</div>
+	<div class="CSC148 Addon" id="review">Tough final</div>
+	<div class="CSC209 Addon" id="review">Bad structure</div>
+
+<!-- JS to toggle visibility for reviews -->
+	<script type="text/javascript">
+    $(document).ready(function () {
+        $('.Addon').hide();
+        $('#option1').show();
+        $('#selectMe').change(function () {
+            $('.Addon').hide();
+            $('.' + $(this).val()).show();
+        })
+    });
+	</script>
+
+
+<!-- Option to add new course -->
+	<h3> Don't see a course you're taking? Add it </h3>
+
+<!-- Option to write a review -->
+	<h3> Write your own review </h3>
+
+	<form>
+    <!-- TODO: dropdown selection to choose their course -->
+    	<select>
+        	<option value="148">CSC148</option>
+        	<option value="209">CSC209</option>
+    	</select>
+
+    <br><br>
+    Comments:<br>
+    	<input type="text" name="comments" value="Add comment here">
+    	<br><br>
+    	<input type="submit" value="Submit">
+	</form>
 </div>
 </body>
 </html>
