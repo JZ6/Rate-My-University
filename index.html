@@ -113,11 +113,9 @@
             success: function (data) {
 
                 $('#conlist').empty();
-
+				
                 $.each(JSON.parse(data), function (i, uni) {
-                    $('<li>')
-                        .text(uni.name)
-                        .appendTo('#conlist')
+                	$('#conlist').prepend('<a href="javascript:;" data-theme="b" data-role="button" >'+uni.name+'</a>');
                 })
             }
         });
