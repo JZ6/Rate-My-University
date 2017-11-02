@@ -2,14 +2,27 @@
 <html lang="en-CA	">
 <head>
     <meta charset="utf-8">
-    <title>University Ratings</title>
-    <meta name="description" content="Course Ratings">
+    <title>Rate My University</title>
+    <meta name="description" content="University ratings">
     <meta name="author" content="JZ">
     <script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
     <style>
+        body {
+            margin: 0px;
+        }
+
+        .container {
+            background: #1CE; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(#1CE, royalblue); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(#1CE, royalblue); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(#1CE, royalblue); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(#1CE, royalblue); /* Standard syntax (must be last) */
+            min-height: 94vh;
+            font-size: 1.2em;
+        }
 
         #searchcenter {
             margin-left: auto;
@@ -28,6 +41,26 @@
             padding: 2px 5px;
         }
 
+        #banner {
+            background: midnightblue; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(#00204E, #000428); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(#00204E, #000428); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(#00204E, #000428); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(#00204E, #000428); /* Standard syntax (must be last) */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: whitesmoke;
+            height: 6vh;
+            font-size: 1.0em;
+
+        }
+
+        img.logo {
+            max-width: 25vh;
+            max-height: 25vh;
+        }
+
         div.center {
             height: 10em;
             display: flex;
@@ -40,7 +73,8 @@
         }
 
         .dropbtn {
-            background-color: #1CE;
+            border-radius: 18px;
+            background-color: #00204E;
             color: white;
             padding: 16px;
             font-size: 16px;
@@ -49,10 +83,6 @@
             display: flex;
             align-items: center;
             justify-content: center
-        }
-
-        .dropbtn:hover, .dropbtn:focus {
-            background-color: lightskyblue;
         }
 
         .dropdown {
@@ -64,10 +94,8 @@
 
         .dropdown-content {
             display: block;
-            background-color: #f9f9f9;
-            min-width: 160px;
+            min-width: 180px;
             overflow: auto;
-            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
 
@@ -79,7 +107,6 @@
         }
 
         .dropdown a:hover {
-            background-color: #f1f1f1
         }
 
         .show {
@@ -89,16 +116,43 @@
     </style>
 </head>
 <body>
-<div class=center style="background-color: #1CE">
-    <h1>University Ratings</h1>
+<div id=banner>
+    <h1>Rate My University</h1>
 </div>
 
-<div class=center>
+<div class=container>
+    <div style="margin: auto; text-align: center;">
+        <img class="logo"
+             src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1024px-Utoronto_coa.svg.png">
+        <p>
+            Higher Education for A Higher Mind.
+        </p>
+    </div>
+    <div class=center>
 
-    <label class="center">Enter the Country the University is in:
 
-        <input name="Country Name" id="country" list="unis"/></label>
-    <datalist id="unis"></datalist>
+        <label class="center">Country of University:
+
+            <input name="Country Name" id="country" list="unis"/></label>
+        <datalist id="unis"></datalist>
+
+    </div>
+
+    <div id="searchcenter">
+        <div id='lookupname' style="display:none; margin: 1vh">
+            <input type="text" class=center id="unifilter" style="font-size:18pt" onkeyup="namelookup()"
+                   placeholder="Search for a University..." title="Type Name">
+        </div>
+
+        <div class="dropdown">
+            <button onclick="uniselect()" id="getlist" class="dropbtn">Get Universities</button>
+        </div>
+    </div>
+
+
+    <ul id="conlist" class="dropdown-content">
+    </ul>
+
     <script type="text/javascript">
         var currentunis = ["Canada", "United States", "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cruise Ship", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyz Republic", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre &amp; Miquelon", "Samoa", "San Marino", "Satellite", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "St Kitts &amp; Nevis", "St Lucia", "St Vincent", "St. Lucia", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad &amp; Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks &amp; Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"];
 
@@ -109,63 +163,46 @@
 
         document.getElementById('unis').innerHTML = unilist;
     </script>
-</div>
 
-<div id="searchcenter">
-    <div id='lookupname' style="display:none">
-        <input type="text" class=center id="unifilter" style="font-size:18pt" onkeyup="namelookup()"
-               placeholder="Search for a University..." title="Type Name">
-    </div>
-    <p>
+    <script>
+        /*toggle dropdown content on click */
+        function uniselect() {
+            document.getElementById("getlist").innerHTML = "Universities in " + document.getElementById("country").value;
+            var requrl = 'https://cors-anywhere.herokuapp.com/' + 'http://universities.hipolabs.com/search?country=' + document.getElementById("country").value;
+            jQuery('#lookupname').toggle('show');
+            $.ajax({
+                type: 'GET',
+                url: requrl,
+                success: function (data) {
 
-    </p>
-    <div class="dropdown">
-        <button onclick="uniselect()" id="getlist" class="dropbtn">Get Universities</button>
-    </div>
-</div>
+                    $('#conlist').empty();
 
+                    $.each(JSON.parse(data), function (i, uni) {
+                        $('#conlist').append('<li><a href="javascript:;" data-theme="b" data-role="button" class=center >' + uni.name + '</a></li>');
+                    })
+                }
+            });
 
-<ul id="conlist" class="dropdown-content">
-</ul>
+            document.getElementById("conlist").classList.show("show");
+        }
 
-<script>
-    /*toggle dropdown content on click */
-    function uniselect() {
-        document.getElementById("getlist").innerHTML = "Universities in " + document.getElementById("country").value;
-        var requrl = 'https://cors-anywhere.herokuapp.com/' + 'http://universities.hipolabs.com/search?country=' + document.getElementById("country").value;
-        jQuery('#lookupname').toggle('show');
-        $.ajax({
-            type: 'GET',
-            url: requrl,
-            success: function (data) {
+        function namelookup() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("unifilter");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("conlist");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
 
-                $('#conlist').empty();
-
-                $.each(JSON.parse(data), function (i, uni) {
-                    $('#conlist').append('<li><a href="javascript:;" data-theme="b" data-role="button" class=center >' + uni.name + '</a></li>');
-                })
-            }
-        });
-
-        document.getElementById("conlist").classList.toggle("show");
-    }
-    function namelookup() {
-        var input, filter, ul, li, a, i;
-        input = document.getElementById("unifilter");
-        filter = input.value.toUpperCase();
-        ul = document.getElementById("conlist");
-        li = ul.getElementsByTagName("li");
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
-
+                }
             }
         }
-    }
-</script>
-
+    </script>
+</div>
 </body>
 </html>
