@@ -1,21 +1,5 @@
-/* banner*/
-#banner {
-          background: midnightblue; /* For browsers that do not support gradients */
-          background: -webkit-linear-gradient(#00204E, #000428); /* For Safari 5.1 to 6.0 */
-          background: -o-linear-gradient(#00204E, #000428); /* For Opera 11.1 to 12.0 */
-          background: -moz-linear-gradient(#00204E, #000428); /* For Firefox 3.6 to 15 */
-          background: linear-gradient(#00204E, #000428); /* Standard syntax (must be last) */
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: whitesmoke;
-          height: 6vh;
-          font-size: 1.0em;
-
-      }
-
-.container-everything {
-    max-height : 100vh;
+body {
+    margin: 0;
 }
 
 /*    apply default font to everything except fa icons    */
@@ -24,14 +8,7 @@ html *:not(.fa)
    font-family: Helvetica, arial, serif !important;
 }
 
-/*    background image for page    */
-/*
-body {
-    background-image: url("http://img03.deviantart.net/5774/i/2013/169/f/c/yellow_lined_paper_by_andie200-d69jqez.png");
-}
-*/
-
-.container {
+.container3 {
     margin: auto;
     padding: 0px;
     /*flex-wrap: wrap;*/
@@ -40,11 +17,7 @@ body {
 }
 @media only screen and (max-width: 900px) {
 /* Some CSS rules */
-    .container {
-        display: block;
-    }
-}
-/*    for main blocks    */
+
 .header {
     height: 10em;
     justify-content: center;
