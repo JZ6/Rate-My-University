@@ -48,7 +48,14 @@
             color: whitesmoke;
             height: 6vh;
             font-size: 1.0em;
+            position: relative;
 
+        }
+        
+        #banner home {
+        	position: absolute;
+        	top: 0px;
+        	right: 0px;
         }
 
         img.logo {
