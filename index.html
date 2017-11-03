@@ -10,8 +10,8 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="view1.css">
+    
     <!-- style for banner for our website -->
-
     <style>
     	#banner {
             background: midnightblue; /* For browsers that do not support gradients */
@@ -59,7 +59,7 @@
     	$("#conlist").empty();
     	$('link').attr('href','view1.css');
     	$("#country").val("");
-	$("#unifilter").val("");
+	    $("#unifilter").val("");
     	$('#lookupname').toggle('hide');
 
   	});
@@ -121,7 +121,7 @@
         function uniselect() {
             document.getElementById("getlist").innerHTML = "Universities in " + document.getElementById("country").value;
             var requrl = 'https://cors-anywhere.herokuapp.com/' + 'http://universities.hipolabs.com/search?country=' + document.getElementById("country").value;
-	    document.getElementById("conlist").innerHTML = "";
+	    	document.getElementById("conlist").innerHTML = "";
             jQuery('#lookupname').toggle('show');
             $.ajax({
                 type: 'GET',
@@ -130,7 +130,7 @@
 
 
                     $.each(JSON.parse(data), function (i, uni) {
-                    	var newButton = '<li><a href="javascript:;" data-theme="b" data-role="button" style="border: 3px solid #00204E; border-radius: 36px; background: rgba(255, 255, 255, 0.1);" class=center >' + uni.name + '</a></li>';
+                    	var newButton = '<li><a href="javascript:;" data-theme="b" data-role="button" style="border: 3px solid #00204E; border-radius: 36px; background: rgba(255, 255, 255, 0.1);" id="' + uni.web_pages[0] + '" class=center >' + uni.name + '</a></li>';
                         $('#conlist').append(newButton);
                     })
                 }
@@ -141,13 +141,13 @@
             	$(".secondcontainer").show();
             	$('link[href="view1.css"]').attr('href','view2.css');
             	$("#uni-name").text($(this).text());
+            	$("#link").text($(this).attr('id'));
             	$(".header").html("<h1>Ratings and Reviews</h1><h4>for " + $(this).text() + " </h4>");
 
             });
-        }
+        }        
 
 		/* university filter */
-
         function namelookup() {
             var input, filter, ul, li, a, i;
             input = document.getElementById("unifilter");
@@ -176,7 +176,7 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Uoft_conhall.jpg">
                     <div id="uni-text">
                       <h3 id="uni-name"> <span style="background-color: rgba(0, 0, 0, 0.6)"> Filler Name </span></h3>
-											<p id='links'> @university <span style="color: blue"> www.webpage.edu </span> </p>
+											<p id='links'> @university <span id='link' style="color: blue"> www.webpage.edu </span> </p>
                       <p id="uni-info-wiki"> <span> Lorem ipsum dolor sit amet,
                         consectetur adipiscing elit. Nulla risus nunc, finibus
                         sed aliquet ut, eleifend in risus. Mauris elit massa,
