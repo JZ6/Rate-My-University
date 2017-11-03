@@ -15,9 +15,12 @@ html *:not(.fa)
     display:flex;
     width:90%;
 }
-@media only screen and (max-width: 900px) {
-/* Some CSS rules */
-
+@media only screen and (max-width: 900px) { 
+/* Some CSS rules */    
+    .container3 {
+        display: block;
+    }
+}
 .header {
     height: 10em;
     justify-content: center;
