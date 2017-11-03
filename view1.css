@@ -47,8 +47,19 @@
             justify-content: center;
             color: whitesmoke;
             height: 6vh;
-            font-size: 1.0em;
+            font-size: 1.2em;
+            position: relative;
 
+        }
+        
+        #home {
+        	color: white;
+        	font-size: 1.2em;
+        	position: absolute;
+        	top: 0;
+        	right: 0;
+        	border: None;
+        	background: rgba(255, 255, 255, 0.1);
         }
 
         img.logo {
@@ -65,6 +76,7 @@
 
         div.center p {
             margin: 0
+	    style="font-size:1.5em"
         }
 
         .dropbtn {
@@ -72,7 +84,7 @@
             background-color: #00204E;
             color: white;
             padding: 16px;
-            font-size: 16px;
+            font-size: 1.2em;
             border: none;
             cursor: pointer;
             display: flex;

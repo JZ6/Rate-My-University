@@ -11,12 +11,57 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="view1.css">
 
+    <style>
+    	#banner {
+            background: midnightblue; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(#00204E, #000428); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(#00204E, #000428); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(#00204E, #000428); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(#00204E, #000428); /* Standard syntax (must be last) */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: whitesmoke;
+            height: 6vh;
+            font-size: 1.2em;
+            position: relative;
+
+        }
+
+        #home {
+        	color: white;
+        	font-size: 1.2em;
+        	position: absolute;
+        	top: 0;
+        	right: 0;
+		height: 6vh;
+        	border: None;
+        	background: rgba(255, 255, 255, 0.1);
+        }
+
+    </style>
+
 
 </head>
 <body>
 <div id=banner>
     <h1>Rate My University</h1>
+    <button id="home"  type='button'> Home </button>
 </div>
+
+<script>
+	$("#home").click(function() {
+  		$(".secondcontainer").hide();
+    	$(".thirdcontainer").hide();
+    	$(".container").show();
+    	$("#conlist").empty();
+    	$('link').attr('href','view1.css');
+    	$("#country").val("");
+    	$('#lookupname').toggle('hide');
+
+  	});
+</script>
+
 
 
 <div class="container">
@@ -29,17 +74,16 @@
     </div>
     <div class=center>
 
+        <label class="center" style="font-size:1.2em">Country of University:
 
-        <label class="center">Country of University:
-
-            <input name="Country Name" id="country" list="unis"/></label>
+            <input name="Country Name" id="country" style="font-size:1.2em" list="unis"/></label>
         <datalist id="unis"></datalist>
 
     </div>
 
     <div id="searchcenter">
         <div id='lookupname' style="display:none; margin: 1vh">
-            <input type="text" class=center id="unifilter" style="font-size:18pt" onkeyup="namelookup()"
+            <input type="text" class=center id="unifilter" style="font-size:1.5em" onkeyup="namelookup()"
                    placeholder="Search for a University..." title="Type Name">
         </div>
 
@@ -74,15 +118,16 @@
         function uniselect() {
             document.getElementById("getlist").innerHTML = "Universities in " + document.getElementById("country").value;
             var requrl = 'https://cors-anywhere.herokuapp.com/' + 'http://universities.hipolabs.com/search?country=' + document.getElementById("country").value;
+	    document.getElementById("conlist").innerHTML = "";
             jQuery('#lookupname').toggle('show');
             $.ajax({
                 type: 'GET',
                 url: requrl,
                 success: function (data) {
 
-                    $('#conlist').empty();
+
                     $.each(JSON.parse(data), function (i, uni) {
-                    	var newButton = '<li><a href="javascript:;" data-theme="b" data-role="button" class=center >' + uni.name + '</a></li>';
+                    	var newButton = '<li><a href="javascript:;" data-theme="b" data-role="button" style="border: 3px solid #00204E; border-radius: 36px; background: rgba(255, 255, 255, 0.1);" class=center >' + uni.name + '</a></li>';
                         $('#conlist').append(newButton);
                     })
                 }
@@ -98,8 +143,6 @@
             });
             //document.getElementById("conlist").classList.show("show");
         }
-
-
 
         function namelookup() {
             var input, filter, ul, li, a, i;
@@ -262,46 +305,163 @@ Reviews will appear when clicking on a category -->
             <option>Hello 4</option>
         </select>
         <div class="select_arrow">
+
+        </div>
+    </div>
+    <!-- Here, we will display 3 rating categories and its star rating;
+    Reviews will appear when clicking on a category -->
+
+    <div class="container3">
+        <div class="categories item">
+            <!-- display 3 rating categories -->
+            <h3> Scored categories </h3>
+
+            <div id="category1"><button id="category1" class="btn"><span>Overall</span></button></div><br>
+            <div id="category2"><button id="category2" class="btn"><span>Campus</span></button></div>
+            <br>
+            <div id="category3"><button id="category3" class="btn"><span>Easiness</span></button></div><br><br>
+
+            <script>
+                // add stars to categories here; for A2 this will be randomly generated
+                for (c = 1; c <= 3; c++) {
+                    var numCheckedStars = Math.floor((Math.random() * 5) + 1); //get random num from 1-5
+                    var numUncheckedStars = 5 - numCheckedStars;
+                    var text = '';
+
+                    for (i = 1; i <= numCheckedStars; i++) {
+                        if (i == 1) {
+                            text += '&nbsp;&nbsp;&nbsp;'
+                        }
+                        text += '<span class="fa fa-star checked"></span>';
+                    }
+                    for (i = 1; i <= numUncheckedStars; i++) {
+                        text += '<span class="fa fa-star"></span>';
+                    }
+                    var appendName = "#category" + c;
+                    $(appendName).append(text);
+                }
+                // since we have no backend yet, we will choose comments to display randomly from a list of reviews
+                var overallReviews = ["I really loved my time here because all the profs, and especially the TA's, were so nice. "];
+                var campusReviews = ["x100 a better looking campus than Waterloo", "Large campus, might take a while walk to your next class", "Lots of libraries and services on campus!", "pretty safe campus"];
+                var easinessReviews = ["It's only easy if you try.", "Don't come here, it's a trap", "Courses are killing me", "Ehhh, I'm a genius so I find everything easy", "Challenging..."];
+
+                var counter1 = 0;
+                $("#category1").click(function() {
+                    var randInt = Math.floor((Math.random() * overallReviews.length) + 1);
+                    if (counter1 == 0) {
+                        $("#category1").append('<div class="erase" id="erase1">' + overallReviews[randInt - 1] +'</div>')
+                        counter1++;
+                    } else {
+                        var element = document.getElementById("erase1");
+                        element.parentNode.removeChild(element);
+                        counter1 = 0;
+                    }
+                });
+
+                var counter2 = 0;
+                $("#category2").click(function() {
+                    var randInt = Math.floor((Math.random() * campusReviews.length) + 1);
+                    if (counter2 == 0) {
+                        $("#category2").append('<div class="erase" id="erase2">' + campusReviews[randInt - 1] +'</div>')
+                        counter2++;
+                    } else {
+                        var element = document.getElementById("erase2");
+                        element.parentNode.removeChild(element);
+                        counter2 = 0;
+                    }
+                });
+
+                var counter3 = 0;
+                $("#category3").click(function() {
+                    var randInt = Math.floor((Math.random() * easinessReviews.length) + 1);
+                    if (counter3 == 0) {
+                        $("#category3").append('<div class="erase" id="erase3">' + easinessReviews[randInt - 1] +'</div>')
+                        counter3++;
+                    } else {
+                        var element = document.getElementById("erase3");
+                        element.parentNode.removeChild(element);
+                        counter3 = 0;
+                    }
+                });
+            </script>
+        </div>
+
+        <div class="moreCategories item">
+            <h3> More categories to view </h3>
+
+            <div class="select">
+                <select id="selectMe">
+                    <option>Select</option>
+                    <option value="category4">Food</option>
+                    <option value="category5">Happiness</option>
+                    <option value="category6">Professors</option>
+                    <option value="category7">TA's</option>
+                </select>
+                <div class="select_arrow">
+                </div>
+            </div>
+
+            <!-- some harded-coded reviews, only for A2 -->
+            <div class="category4 more" id="review">Liked it</div>
+            <div class="category4 more" id="review">A bit bland</div>
+            <div class="category4 more" id="review">Not too many choices</div>
+            <div class="category5 more" id="review">Could be better</div>
+            <div class="category6 more" id="review">CSC309 is the best course ever! Take it when Prof Gonzalez is teaching.</div>
+            <div class="category6 more" id="review">My profs are great, especially for CSC309!</div>
+            <div class="category7 more" id="review">The TA's are some of the nicest people ever (in the whole world). </div>
+            <div class="category7 more" id="review">Other qualities they have include: compassion, generosity, hardworking, and motivational.</div>
+
+            <!-- JS to toggle visibility for reviews -->
+            <script type="text/javascript">
+                $(document).ready(function () {
+                  $('.more').hide();
+                  $('#selectMe').change(function () {
+                    $('.more').hide();
+                    $('.'+$(this).val()).show();
+                  })
+                });
+            </script>
         </div>
     </div>
 
-    <select id="selectMe">
-      <option value="choose">Choose</option>
-      <option value="category4">Food</option>
-      <option value="category5">Happiness</option>
-    </select>
+    <div class="container3">
+        <div class="addReview">
+            <h3> Write your own review </h3>
 
-    <!-- some harded-coded reviews, only for A2 -->
-    <div class="category4 more" id="review">Liked it</div>
-    <div class="category4 more" id="review">A bit bland</div>
-    <div class="category4 more" id="review">Not too many choices</div>
-    <div class="category5 more" id="review">Could be better</div>
+            <form>
+                <div class="select">
+                    <select id="selectMe">
+                        <option>Select</option>
+                        <option value="category4">Food</option>
+                        <option value="category5">Happiness</option>
+                        <option value="category6">Professors</option>
+                        <option value="category7">TA's</option>
+                    </select>
+                    <div class="select_arrow">
+                    </div>
+                </div>
+                <br>
+                <span class="rating">
+                    <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1"/>
+                    <label for="rating-input-1-5" class="rating-star"></label>
+                    <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1"/>
+                    <label for="rating-input-1-4" class="rating-star"></label>
+                    <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1"/>
+                    <label for="rating-input-1-3" class="rating-star"></label>
+                    <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1"/>
+                    <label for="rating-input-1-2" class="rating-star"></label>
+                    <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1"/>
+                    <label for="rating-input-1-1" class="rating-star"></label>
+                </span>
 
-    <!-- JS to toggle visibility for reviews -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-          $('.more').hide();
-          $('#selectMe').change(function () {
-            $('.more').hide();
-            $('.'+$(this).val()).show();
-          })
-        });
-    </script>
-</div>
-
-<div class="addReview">
-    <h3> Write your own review </h3>
-
-    <form>
-        <div class="select">
-            <select>
-                <option>--Select--</option>
-                <option value="fill in">Fill in 1</option>
-                <option value="fill in 2">Fill in 2</option>
-                <option value="fill in 3">Fill in 3</option>
-            </select>
-            <div class="select_arrow"></div>
+                <br><br>
+                Comments:<br>
+                <input class="textbox" type="text" name="comments" value="">
+                <br><br>
+                <button class="review-submit" type="submit" style="vertical-align:middle"><span>Submit </span></button>
+            </form>
         </div>
+
         <br>
         <span class="rating">
             <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1"/>
@@ -322,14 +482,9 @@ Reviews will appear when clicking on a category -->
         <br><br>
         <input class="review-submit" type="submit" value="Submit">
     </form>
+
 </div>
 
-<script>
-    $('.review-submit').on('click', function() {
-        alert("Will be able to submit in A3");
-    })
-</script>
 </div>
-
 </body>
 </html>
