@@ -13,27 +13,31 @@
             background-image: url("http://img03.deviantart.net/5774/i/2013/169/f/c/yellow_lined_paper_by_andie200-d69jqez.png");
         }
 
-        /*    for main blocks    */
+/*    for main blocks    */
         .header {
             height: 10em;
             justify-content: center;
             background-color:cornsilk;
             padding: 20px;
+            padding-left: 10%;
             margin: 40px;
         }
         .categories {
             background-color: whitesmoke;
             padding: 20px;
+            padding-left: 10%;
             margin: 40px;
         }
         .moreCategories {
             background-color:cornsilk;
             padding: 20px;
+            padding-left: 10%;
             margin: 40px;
         }
         .addReview {
             background-color: whitesmoke;
             padding: 20px;
+            padding-left: 10%;
             margin: 40px;
         }
         
@@ -48,7 +52,7 @@
             color: orange;
         }
 
-        /* for first block "Scored Categories" */
+/* for first block "Scored Categories" */
         button {
             background-color: #242f96;
             border: none;
@@ -72,6 +76,15 @@
             margin-left: 15px;
         }
         
+        .more {
+            width: 50%;
+            padding: 10px 10px;
+            text-align: left;
+            background-color: #ffe6b3;
+            margin-top: 10px;
+            margin-left: 15px;
+        }
+        
         .textbox {
             height: 50px;
             width: 50%;
@@ -82,7 +95,7 @@
             font-size: 14px;
         }
         
-        /* the dropdown menus used in 'more categories' and 'write own review' */
+/* the dropdown menus used in 'more categories' and 'write own review' */
         .select {
             position: relative;
             display: inline-block;
@@ -109,7 +122,7 @@
                 .select select:hover,
                 .select select:focus {
                     color: #000000;
-                    background: #CCCCCC;
+                    background: #cce6ff;
                 }
                 .select select:disabled {
                     opacity: 0.4;
@@ -134,7 +147,7 @@
             border-top-color: #CCCCCC;
         }
         
-        /* for star ratings in 'write your own review' */
+/* for star ratings in 'write your own review' */
         .rating {
             overflow: hidden;
             display: inline-block;
@@ -163,6 +176,47 @@
             height: 16px;
             background: url('https://home.et.utwente.nl/slootenvanf/wp-content/plugins/fvs-peer-review/img/star.png') 0 -16px;
         }
+        
+/*Submit button, from https://www.w3schools.com/csS/tryit.asp?filename=trycss_buttons_animate3*/
+        .review-submit {
+          display: inline-block;
+          border-radius: 4px;
+          background-color: #f4511e;
+          border: none;
+          color: #FFFFFF;
+          text-align: center;
+          font-size: 18px;
+          padding: 10px;
+          width: 200px;
+          transition: all 0.5s;
+          cursor: pointer;
+          margin: 5px;
+        }
+
+        .review-submit span {
+          cursor: pointer;
+          display: inline-block;
+          position: relative;
+          transition: 0.5s;
+        }
+
+        .review-submit span:after {
+          content: '\00bb';
+          position: absolute;
+          opacity: 0;
+          top: 0;
+          right: -20px;
+          transition: 0.5s;
+        }
+
+        .review-submit:hover span {
+          padding-right: 25px;
+        }
+
+        .review-submit:hover span:after {
+          opacity: 1;
+          right: 0;
+        }
     </style>
 </head>
 <body>
@@ -188,7 +242,8 @@ Reviews will appear when clicking on a category -->
     <h3> Scored categories </h3>
     
     <div id="category1"><button id="category1" class="btn"><span>Overall</span></button></div><br>
-    <div id="category2"><button id="category2" class="btn"><span>Campus</span></button></div><br><br>
+    <div id="category2"><button id="category2" class="btn"><span>Campus</span></button></div>
+    <br>
     <div id="category3"><button id="category3" class="btn"><span>Easiness</span></button></div><br><br>
     
     <script>
@@ -255,35 +310,32 @@ Reviews will appear when clicking on a category -->
             }
         });
     </script>
-    
 </div>
 
 <div class="moreCategories">
     <h3> More categories to view </h3> 
     
     <div class="select">
-        <select>
-            <option>--Select--</option>
-            <option>Hello 1</option>
-            <option>Hello 2</option>
-            <option>Hello 3</option>
-            <option>Hello 4</option>
+        <select id="selectMe">
+            <option>Select</option>
+            <option value="category4">Food</option>
+            <option value="category5">Happiness</option>
+            <option value="category6">Professors</option>
+            <option value="category7">TA's</option>
         </select>
         <div class="select_arrow">
         </div>
     </div>
-
-    <select id="selectMe">
-      <option value="choose">Choose</option>
-      <option value="category4">Food</option>
-      <option value="category5">Happiness</option>
-    </select>
 
     <!-- some harded-coded reviews, only for A2 -->
     <div class="category4 more" id="review">Liked it</div>
     <div class="category4 more" id="review">A bit bland</div>
     <div class="category4 more" id="review">Not too many choices</div>
     <div class="category5 more" id="review">Could be better</div>
+    <div class="category6 more" id="review">CSC309 is the best course ever! Take it when Prof Gonzalez is teaching.</div>
+    <div class="category6 more" id="review">My profs are great, especially for CSC309!</div>
+    <div class="category7 more" id="review">The TA's are some of the nicest people ever (in the whole world). </div>
+    <div class="category7 more" id="review">Other qualities they have include: compassion, generosity, hardworking, and motivational.</div>
 
     <!-- JS to toggle visibility for reviews -->
     <script type="text/javascript">
@@ -302,13 +354,15 @@ Reviews will appear when clicking on a category -->
 
     <form>
         <div class="select">
-            <select>
-                <option>--Select--</option>
-                <option value="fill in">Fill in 1</option>
-                <option value="fill in 2">Fill in 2</option>
-                <option value="fill in 3">Fill in 3</option>
+            <select id="selectMe">
+                <option>Select</option>
+                <option value="category4">Food</option>
+                <option value="category5">Happiness</option>
+                <option value="category6">Professors</option>
+                <option value="category7">TA's</option>
             </select>
-            <div class="select_arrow"></div>
+            <div class="select_arrow">
+            </div>
         </div>
         <br>
         <span class="rating">
@@ -324,11 +378,11 @@ Reviews will appear when clicking on a category -->
             <label for="rating-input-1-1" class="rating-star"></label>
 	    </span>
         
-        <br>
+        <br><br>
         Comments:<br>
         <input class="textbox" type="text" name="comments" value="">
         <br><br>
-        <input class="review-submit" type="submit" value="Submit">
+        <button class="review-submit" type="submit" style="vertical-align:middle"><span>Submit </span></button>
     </form> 
 </div>
 <script>
