@@ -47,8 +47,7 @@
             justify-content: center;
             color: whitesmoke;
             height: 6vh;
-            font-size: 1.0em;
-            position: relative;
+            font-size: 1.2em;
 
         }
         
@@ -72,6 +71,7 @@
 
         div.center p {
             margin: 0
+	    style="font-size:1.5em"
         }
 
         .dropbtn {
@@ -79,7 +79,7 @@
             background-color: #00204E;
             color: white;
             padding: 16px;
-            font-size: 16px;
+            font-size: 1.2em;
             border: none;
             cursor: pointer;
             display: flex;
