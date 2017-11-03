@@ -19,7 +19,7 @@
 }
 
 /*    apply default font to everything except fa icons    */
-html *:not(.fa) 
+html *:not(.fa)
 {
    font-family: Helvetica, arial, serif !important;
 }
@@ -38,8 +38,8 @@ body {
     display:flex;
     width:90%;
 }
-@media only screen and (max-width: 900px) { 
-/* Some CSS rules */    
+@media only screen and (max-width: 900px) {
+/* Some CSS rules */
     .container {
         display: block;
     }
@@ -78,9 +78,9 @@ body {
 }
 
 /* text styling */
-h3 { 
-    font-family: Helvetica, arial, serif; 
-    font-size: 30px; 
+h3 {
+    font-family: Helvetica, arial, serif;
+    font-size: 30px;
 }
 /* for stars */
 .checked {
@@ -161,7 +161,7 @@ button {
         .select select:disabled {
             opacity: 0.4;
             pointer-events: none;
-        }     
+        }
 .select_arrow {
     position: absolute;
     top: 15px;
