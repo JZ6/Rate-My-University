@@ -1,0 +1,165 @@
+		html *
+        {
+           font-family: Helvetica, arial, serif !important;
+        }
+        body {
+            background-image: url("http://img03.deviantart.net/5774/i/2013/169/f/c/yellow_lined_paper_by_andie200-d69jqez.png");
+        }
+		
+		.container {
+      		display: none;
+      	}
+      
+      	.secondcontainer {
+      		display: none;
+      	}
+        /*    for main blocks    */
+        .header {
+            height: 10em;
+            justify-content: center;
+            background-color:cornsilk;
+            padding: 20px;
+            margin: 40px;
+        }
+        .categories {
+            background-color: whitesmoke;
+            padding: 20px;
+            margin: 40px;
+        }
+        .moreCategories {
+            background-color:cornsilk;
+            padding: 20px;
+            margin: 40px;
+        }
+        .addReview {
+            background-color: whitesmoke;
+            padding: 20px;
+            margin: 40px;
+        }
+        
+        /* text styling */
+        h3 { 
+            font-family: Helvetica, arial, serif; 
+            font-size: 30px; 
+        }
+
+        /* for stars */
+        .checked {
+            color: orange;
+        }
+
+        /* for first block "Scored Categories" */
+        button {
+            background-color: #242f96;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 120px;
+            height: 40px;
+        }
+                /*    this styles the review comments    */
+        .erase {
+            width: 50%;
+            padding: 10px 10px;
+            text-align: left;
+            background-color: azure;
+            margin-top: 10px;
+            margin-left: 15px;
+        }
+        
+        .textbox {
+            height: 50px;
+            width: 50%;
+            position: relative;
+            border: 2px solid #cdcdcd;
+            border-color: rgba(0,0,0,.14);
+            background-color: AliceBlue ;   ;
+            font-size: 14px;
+        }
+        
+        /* the dropdown menus used in 'more categories' and 'write own review' */
+        .select {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+            width: 30%;
+        }    .select select {
+                font-family: 'Arial';
+                display: inline-block;
+                width: 100%;
+                cursor: pointer;
+                padding: 12px 22px;
+                outline: 0;
+                border: 2px solid #000000;
+                border-radius: 18px;
+                background: #F1F1F5;
+                color: #080404;
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+            }
+                .select select::-ms-expand {
+                    display: none;
+                }
+                .select select:hover,
+                .select select:focus {
+                    color: #000000;
+                    background: #CCCCCC;
+                }
+                .select select:disabled {
+                    opacity: 0.4;
+                    pointer-events: none;
+                }     
+        .select_arrow {
+            position: absolute;
+            top: 21px;
+            right: 21px;
+            width: 0;
+            height: 0;
+            pointer-events: none;
+            border-style: solid;
+            border-width: 8px 5px 0px 5px;
+            border-color: #7B7B7B transparent transparent transparent;
+        }
+        .select select:hover ~ .select_arrow,
+        .select select:focus ~ .select_arrow {
+            border-top-color: #3929B3;
+        }
+        .select select:disabled ~ .select_arrow {
+            border-top-color: #CCCCCC;
+        }
+        
+        /* for star ratings in 'write your own review' */
+        .rating {
+            overflow: hidden;
+            display: inline-block;
+            font-size: 0;
+            position: relative;
+        }
+        .rating-input {
+            float: right;
+            width: 16px;
+            height: 16px;
+            padding: 0;
+            margin: 0 0 0 -16px;
+            opacity: 0;
+        }
+        .rating:hover .rating-star:hover,
+        .rating:hover .rating-star:hover ~ .rating-star,
+        .rating-input:checked ~ .rating-star {
+            background-position: 0 0;
+        }
+        .rating-star,
+        .rating:hover .rating-star {
+            position: relative;
+            float: right;
+            display: block;
+            width: 16px;
+            height: 16px;
+            background: url('https://home.et.utwente.nl/slootenvanf/wp-content/plugins/fvs-peer-review/img/star.png') 0 -16px;
+        }

@@ -9,284 +9,17 @@
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
-    <style>
-        body {
-            margin: 0px;
-        }
-
-        .container {
-            background: #1CE; /* For browsers that do not support gradients */
-            background: -webkit-linear-gradient(#1CE, royalblue); /* For Safari 5.1 to 6.0 */
-            background: -o-linear-gradient(#1CE, royalblue); /* For Opera 11.1 to 12.0 */
-            background: -moz-linear-gradient(#1CE, royalblue); /* For Firefox 3.6 to 15 */
-            background: linear-gradient(#1CE, royalblue); /* Standard syntax (must be last) */
-            min-height: 94vh;
-            font-size: 1.2em;
-        }
-
-
-		.twocontainer {
-			display: none;
-		}
-		
-		.threecontainer {
-			display: none;
-		}
-		
-        #searchcenter {
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center
-        }
-
-        ul {
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            list-style: none;
-        }
-
-        ul li {
-            padding: 2px 5px;
-        }
-
-        #banner {
-            background: midnightblue; /* For browsers that do not support gradients */
-            background: -webkit-linear-gradient(#00204E, #000428); /* For Safari 5.1 to 6.0 */
-            background: -o-linear-gradient(#00204E, #000428); /* For Opera 11.1 to 12.0 */
-            background: -moz-linear-gradient(#00204E, #000428); /* For Firefox 3.6 to 15 */
-            background: linear-gradient(#00204E, #000428); /* Standard syntax (must be last) */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: whitesmoke;
-            height: 6vh;
-            font-size: 1.0em;
-
-        }
-
-        img.logo {
-            max-width: 25vh;
-            max-height: 25vh;
-        }
-
-        div.center {
-            height: 10em;
-            display: flex;
-            align-items: center;
-            justify-content: center
-        }
-
-        div.center p {
-            margin: 0
-        }
-
-        .dropbtn {
-            border-radius: 18px;
-            background-color: #00204E;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center
-        }
-
-        .dropdown {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center
-        }
-
-        .dropdown-content {
-            display: block;
-            min-width: 180px;
-            overflow: auto;
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown a:hover {
-        }
-
-        .show {
-            display: block;
-        }
-		
-		/* second page css */
-		
-		#view2 {
-        width: 100%;
-        clear: both;
-      }
-
-      #info-pane{
-        float: left;
-        width: 40%;
-        height: inherit;
-
-      }
-      #review-pane {
-        float: right;
-        width: 60%;
-        height: inherit;
-      }
-
-      #bkg-img-container {
-        display: inline-block;
-        position: relative;
-        max-width: 100%;
-        height: auto;
-      }
-      #bkg-img-container img{
-        max-width: 100%;
-        height: auto;
-        opacity: 0.7;
-      }
-      #uni-name {
-        position: absolute;
-        font-style: "Helvetica" "sans serif";
-        font-size: 4em;
-        bottom: 65%;
-        left: 5%;
-        color: white;
-      }
-
-      #uni-name span {
-        background-color: rgba(0 ,0, 0, 0.6);
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-
-      #uni-info-wiki {
-        bottom: 40%;
-        position: absolute;
-        font-size: 1.3em;
-        margin: 10%;
-        color:white;
-      }
-
-      #uni-info-wiki span {
-        background-color: rgba(0 ,0, 0, 0.5);
-        padding-left: 10px;
-        padding-right: 10px;
-        letter-spacing: 1px;
-      }
-
-      #course-preview h3 {
-        font-size: 3em;
-        margin-left: 3%;
-        text-align: center;
-      }
-
-      #button-container {
-        text-align: center;
-        width: 100%;
-      }
-
-      #button-container button {
-        display:block;
-        padding:3% 10%;
-        margin: 5% 15% 20% 15%;
-        font-size: 2.5em;
-      }
-
-      .course {
-        width: 90%;
-        background-color: lightblue;
-        height: auto;
-        margin-left: 5%;
-        margin-bottom: 2%;
-        padding: 1%;
-      }
-      .course h4{
-        font-size: 1.8em;
-        margin:auto;
-      }
-
-      .course p{
-        font-size: 1em;
-        margin-left: 2%;
-      }
-
-      .quote {
-        font-size: 1em;
-        font-style: italic;
-        color: black;
-        margin-bottom: 1%;
-        text-align: center;
-      }
-      body {
-          margin: 0px;
-          height: 100%;
-      }
-      
-      /* third page css */
-        div.center {
-            height: 10em;
-            display: flex;
-            align-items: center;
-            justify-content: center
-        }
-
-        #review {
-            width: 50%;
-            padding: 10px 10px;
-            text-align: left;
-            background-color: lightblue;
-            margin-top: 10px;
-            margin-left: 15px;
-        }
-
-        .checked {
-            color: orange;
-        }
-
-        .CSC108 {
-            display: none;
-        }
-
-        .CSC309 {
-            display: none;
-        }
-
-        .CSC411 {
-            display: none;
-        }
-
-        button {
-            background-color: #242f96;
-            border: none;
-            color: white;
-
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            width: 100px;
-        }
+    <link rel="stylesheet" href="view1.css">
 		
 		
-		
-    </style>
 </head>
 <body>
 <div id=banner>
     <h1>Rate My University</h1>
 </div>
 
-<div class=container>
+
+<div class="container">
     <div style="margin: auto; text-align: center;">
         <img class="logo"
              src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1024px-Utoronto_coa.svg.png">
@@ -320,7 +53,8 @@
     </ul>
     
     <script>
-    	$("#twocontainer").hide();
+    	$(".secondcontainer").hide();
+    	$(".thirdcontainer").hide();
     </script>
 
     <script type="text/javascript">
@@ -355,7 +89,12 @@
             });
             $(document).on("click", "a.center", function(){
             	$(".container").hide();
-            	$(".twocontainer").show();
+            	$(".secondcontainer").show();
+            	$('link[href="view1.css"]').attr('href','view2.css');
+            	//alert($(this).text());
+            	$("#uni-name").text($(this).text());
+            	$(".header").html("<h1>Ratings and Reviews</h1><h4>for " + $(this).text() + " </h4>");
+            	
             });
             //document.getElementById("conlist").classList.show("show");
         }
@@ -379,16 +118,11 @@
             }
         }
         
-    </script>
-    
-
-    
-    	
- });
+    </script>	
 </div>
 
-<!-- Second view -->
-<div class=twocontainer>
+<!-- Second page view -->
+<div class="secondcontainer">
 	<div id="view2">
           <div id="info-pane">
                   <div id="bkg-img-container">
@@ -444,120 +178,170 @@
               <button id="to-view3" type='button'> See more reviews </button>
             </div>
           </div>
-          
-          <script>
-          	$("#button-container").click(function() {
-          		$(".twocontainer").hide();
-            	$(".threecontainer").show();
-          	});
-          </script>
   </div>
+  
+  <script>
+  	$("#button-container").click(function() {
+  		$(".secondcontainer").hide();
+        $(".thirdcontainer").show();
+        $('link[href="view2.css"]').attr('href','view3.css');
+  	});
+  </script>
 </div>
 
-<!-- Third view -->
-<div class=threecontainer>
-	<div class=center style="background-color: #1CE">
-    	<h1>Ratings and Reviews</h1>
-	</div>
 
-<!-- display top 3 courses -->
-	<h3> Check out our top 3 courses! </h3>
-
-	<button id="button309" href="#">CSC309</button>
-	<span class="fa fa-star checked"></span>
-	<span class="fa fa-star checked"></span>
-	<span class="fa fa-star checked"></span>
-	<span class="fa fa-star checked"></span>
-	<span class="fa fa-star checked"></span>
-	<div class="CSC309" id="review">Loved this course. Thought it was really helpful.</div>
-	<div class="CSC309" id="review">Nice prof</div>
-	<br>
-
-	<button id="button108" href="#">CSC108</button>
-	<span class="fa fa-star checked"></span>
-	<span class="fa fa-star checked"></span>
-	<span class="fa fa-star checked"></span>
-	<span class="fa fa-star checked"></span>
-	<span class="fa fa-star"></span>
-	<div class="CSC108" id="review">bird course</div>
-	<div class="CSC108" id="review">nice intro to programming</div>
-	<br>
-
-	<button id="button411" href="#">CSC411</button>
-	<span class="fa fa-star checked"></span>
-	<span class="fa fa-star checked"></span>
-	<span class="fa fa-star checked"></span>
-	<span class="fa fa-star"></span>
-	<span class="fa fa-star"></span>
-	<div class="CSC411" id="review">Hated everything about it</div>
-
-	<script>
-    $("#button108").click(function () {
-        $(".CSC108").toggle();
-    });
-
-    $("#button309").click(function () {
-        $(".CSC309").toggle();
-    });
-
-    $("#button411").click(function () {
-        $(".CSC411").toggle();
-    });
-	</script>
-
-
-	<h3> Or choose from our entire list of courses </h3>
-
-	<script type="text/javascript">
-    function dropdownTip(value) {
-        console.log("hi");
-        document.getElementById("result").innerHTML = "No reviews yet";
-    }
-	</script>
-
-	<select id="selectMe">
-    	<option value="choose">choose</option>
-    	<option value="CSC148">CSC148</option>
-    	<option value="CSC209">CSC209</option>
-	</select>
-
-<!-- some harded-coded reviews, only for A2 -->
-	<div class="CSC148 Addon" id="review">Liked it</div>
-	<div class="CSC148 Addon" id="review">Tough final</div>
-	<div class="CSC209 Addon" id="review">Bad structure</div>
-
-<!-- JS to toggle visibility for reviews -->
-	<script type="text/javascript">
-    $(document).ready(function () {
-        $('.Addon').hide();
-        $('#option1').show();
-        $('#selectMe').change(function () {
-            $('.Addon').hide();
-            $('.' + $(this).val()).show();
-        })
-    });
-	</script>
-
-
-<!-- Option to add new course -->
-	<h3> Don't see a course you're taking? Add it </h3>
-
-<!-- Option to write a review -->
-	<h3> Write your own review </h3>
-
-	<form>
-    <!-- TODO: dropdown selection to choose their course -->
-    	<select>
-        	<option value="148">CSC148</option>
-        	<option value="209">CSC209</option>
-    	</select>
-
-    <br><br>
-    Comments:<br>
-    	<input type="text" name="comments" value="Add comment here">
-    	<br><br>
-    	<input type="submit" value="Submit">
-	</form>
+<!-- third page view -->
+<div class="thirdcontainer">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    
+<!-- header -->
+<div class="header">
+  <h1>Ratings and Reviews</h1>
+  <h4>for "insert university name" </h4>
 </div>
+    
+<!-- Here, we will display 3 rating categories and its star rating; 
+Reviews will appear when clicking on a category -->
+<div class="categories"> 
+    <!-- display 3 rating categories -->
+    <h3> Scored categories </h3>
+    
+    <div id="category1"><button id="category1" class="btn"><span>Overall</span></button></div><br><br>
+    <div id="category2"><button id="category2" class="btn"><span>Campus</span></button></div><br><br>
+    <div id="category3"><button id="category3" class="btn"><span>Easiness</span></button></div><br><br>
+    
+    <script>
+        // add stars to categories here
+        
+        
+        // since we have no backend yet, we will choose comments to display randomly from a list of reviews
+        var overallReviews = ["I really loved my time here because all the profs, and especially the TA's, were so nice. "];
+        var campusReviews = ["x100 a better looking campus than Waterloo", "Large campus, might take a while walk to your next class", "Lots of libraries and services on campus!", "pretty safe campus"];
+        var easinessReviews = ["It's only easy if you try.", "Don't come here, it's a trap", "Courses are killing me", "Ehhh, I'm a genius so I find everything easy", "Challenging..."];
+        
+        var counter1 = 0;
+        $("#category1").click(function() {
+            var randInt = Math.floor((Math.random() * overallReviews.length) + 1);
+            if (counter1 == 0) {
+                $("#category1").append('<div class="erase" id="erase1">' + overallReviews[randInt - 1] +'</div>')
+                counter1++;
+            } else {
+                var element = document.getElementById("erase1");
+                element.parentNode.removeChild(element);
+                counter1 = 0;
+            }
+        });
+        
+        var counter2 = 0;
+        $("#category2").click(function() {
+            var randInt = Math.floor((Math.random() * campusReviews.length) + 1);
+            if (counter2 == 0) {
+                $("#category2").append('<div class="erase" id="erase2">' + campusReviews[randInt - 1] +'</div>')
+                counter2++;
+            } else {
+                var element = document.getElementById("erase2");
+                element.parentNode.removeChild(element);
+                counter2 = 0;
+            }
+        });
+        
+        var counter3 = 0;
+        $("#category3").click(function() {
+            var randInt = Math.floor((Math.random() * easinessReviews.length) + 1);
+            if (counter3 == 0) {
+                $("#category3").append('<div class="erase" id="erase3">' + easinessReviews[randInt - 1] +'</div>')
+                counter3++;
+            } else {
+                var element = document.getElementById("erase3");
+                element.parentNode.removeChild(element);
+                counter3 = 0;
+            }
+        });
+    </script>
+    
+</div>
+
+<div class="moreCategories">
+    <h3> More categories to view </h3> 
+    
+    <div class="select">
+        <select>
+            <option>--Select--</option>
+            <option>Hello 1</option>
+            <option>Hello 2</option>
+            <option>Hello 3</option>
+            <option>Hello 4</option>
+        </select>
+        <div class="select_arrow">
+        </div>
+    </div>
+
+    <select id="selectMe">
+      <option value="choose">Choose</option>
+      <option value="category4">Food</option>
+      <option value="category5">Happiness</option>
+    </select>
+
+    <!-- some harded-coded reviews, only for A2 -->
+    <div class="category4 more" id="review">Liked it</div>
+    <div class="category4 more" id="review">A bit bland</div>
+    <div class="category4 more" id="review">Not too many choices</div>
+    <div class="category5 more" id="review">Could be better</div>
+
+    <!-- JS to toggle visibility for reviews -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+          $('.more').hide();
+          $('#selectMe').change(function () {
+            $('.more').hide();
+            $('.'+$(this).val()).show();
+          })
+        });
+    </script>
+</div>
+
+<div class="addReview">
+    <h3> Write your own review </h3>
+
+    <form>
+        <div class="select">
+            <select>
+                <option>--Select--</option>
+                <option value="fill in">Fill in 1</option>
+                <option value="fill in 2">Fill in 2</option>
+                <option value="fill in 3">Fill in 3</option>
+            </select>
+            <div class="select_arrow"></div>
+        </div>
+        <br>
+        <span class="rating">
+            <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1"/>
+            <label for="rating-input-1-5" class="rating-star"></label>
+            <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1"/>
+            <label for="rating-input-1-4" class="rating-star"></label>
+            <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1"/>
+            <label for="rating-input-1-3" class="rating-star"></label>
+            <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1"/>
+            <label for="rating-input-1-2" class="rating-star"></label>
+            <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1"/>
+            <label for="rating-input-1-1" class="rating-star"></label>
+	    </span>
+        
+        <br>
+        Comments:<br>
+        <input class="textbox" type="text" name="comments" value="">
+        <br><br>
+        <input class="review-submit" type="submit" value="Submit">
+    </form> 
+</div>
+
+<script>
+    $('.review-submit').on('click', function() {
+        alert("Will be able to submit in A3");
+    })
+</script>
+</div>
+
 </body>
 </html>
