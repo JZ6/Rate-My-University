@@ -10,7 +10,11 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="view1.css">
+<<<<<<< HEAD
+    <!-- style for banner for our website -->
+=======
 
+>>>>>>> upstream/master
     <style>
     	#banner {
             background: midnightblue; /* For browsers that do not support gradients */
@@ -49,6 +53,7 @@
     <button id="home"  type='button'> Home </button>
 </div>
 
+<!-- script for our home button, which sends the user back to the first view -->
 <script>
 	$("#home").click(function() {
   		$(".secondcontainer").hide();
@@ -63,7 +68,7 @@
 </script>
 
 
-
+<!-- first view -->
 <div class="container">
     <div style="margin: auto; text-align: center;">
         <img class="logo"
@@ -132,18 +137,23 @@
                     })
                 }
             });
+            /* sends the user to the second view page after clicking on a university name */
             $(document).on("click", "a.center", function(){
             	$(".container").hide();
             	$(".secondcontainer").show();
             	$('link[href="view1.css"]').attr('href','view2.css');
-            	//alert($(this).text());
             	$("#uni-name").text($(this).text());
             	$(".header").html("<h1>Ratings and Reviews</h1><h4>for " + $(this).text() + " </h4>");
 
             });
-            //document.getElementById("conlist").classList.show("show");
         }
+<<<<<<< HEAD
+        
 
+		/* university filter */
+=======
+
+>>>>>>> upstream/master
         function namelookup() {
             var input, filter, ul, li, a, i;
             input = document.getElementById("unifilter");
@@ -212,6 +222,7 @@
   </div>
 
   <script>
+  	/* sends the user to the third page view */
   	$("#button-container").click(function() {
   		$(".secondcontainer").hide();
         $(".thirdcontainer").show();
