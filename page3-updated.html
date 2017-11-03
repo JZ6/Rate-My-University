@@ -2,10 +2,13 @@
 <html>
 <head>
     <style>
-        html *
+        /*    apply default font to everything except fa icons    */
+        html *:not(.fa) 
         {
            font-family: Helvetica, arial, serif !important;
         }
+        
+        /*    background image for page    */
         body {
             background-image: url("http://img03.deviantart.net/5774/i/2013/169/f/c/yellow_lined_paper_by_andie200-d69jqez.png");
         }
@@ -64,7 +67,7 @@
             width: 50%;
             padding: 10px 10px;
             text-align: left;
-            background-color: azure;
+            background-color: #ffe6b3;
             margin-top: 10px;
             margin-left: 15px;
         }
@@ -163,13 +166,14 @@
     </style>
 </head>
 <body>
+
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous">
 </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     
 <!-- header -->
 <div class="header">
@@ -183,14 +187,30 @@ Reviews will appear when clicking on a category -->
     <!-- display 3 rating categories -->
     <h3> Scored categories </h3>
     
-    <div id="category1"><button id="category1" class="btn"><span>Overall</span></button></div><br><br>
+    <div id="category1"><button id="category1" class="btn"><span>Overall</span></button></div><br>
     <div id="category2"><button id="category2" class="btn"><span>Campus</span></button></div><br><br>
     <div id="category3"><button id="category3" class="btn"><span>Easiness</span></button></div><br><br>
     
     <script>
-        // add stars to categories here
-        
-        
+        // add stars to categories here; for A2 this will be randomly generated
+        for (c = 1; c <= 3; c++) {
+            var numCheckedStars = Math.floor((Math.random() * 5) + 1); //get random num from 1-5
+            var numUncheckedStars = 5 - numCheckedStars;
+            var text = '';
+            
+            for (i = 1; i <= numCheckedStars; i++) {
+                if (i == 1) {
+                    text += '&nbsp;&nbsp;&nbsp;'
+                }
+                text += '<span class="fa fa-star checked"></span>';
+            } 
+            for (i = 1; i <= numUncheckedStars; i++) {
+                text += '<span class="fa fa-star"></span>';
+            }
+            var appendName = "#category" + c;
+            $(appendName).append(text);
+        }
+
         // since we have no backend yet, we will choose comments to display randomly from a list of reviews
         var overallReviews = ["I really loved my time here because all the profs, and especially the TA's, were so nice. "];
         var campusReviews = ["x100 a better looking campus than Waterloo", "Large campus, might take a while walk to your next class", "Lots of libraries and services on campus!", "pretty safe campus"];
