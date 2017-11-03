@@ -59,6 +59,7 @@
     	$("#conlist").empty();
     	$('link').attr('href','view1.css');
     	$("#country").val("");
+	    $("#unifilter").val("");
     	$('#lookupname').toggle('hide');
 
   	});
@@ -120,7 +121,7 @@
         function uniselect() {
             document.getElementById("getlist").innerHTML = "Universities in " + document.getElementById("country").value;
             var requrl = 'https://cors-anywhere.herokuapp.com/' + 'http://universities.hipolabs.com/search?country=' + document.getElementById("country").value;
-	    document.getElementById("conlist").innerHTML = "";
+	    	document.getElementById("conlist").innerHTML = "";
             jQuery('#lookupname').toggle('show');
             $.ajax({
                 type: 'GET',
@@ -129,7 +130,7 @@
 
 
                     $.each(JSON.parse(data), function (i, uni) {
-                    	var newButton = '<li><a href="javascript:;" data-theme="b" data-role="button" style="border: 3px solid #00204E; border-radius: 36px; background: rgba(255, 255, 255, 0.1);" class=center >' + uni.name + '</a></li>';
+                    	var newButton = '<li><a href="javascript:;" data-theme="b" data-role="button" style="border: 3px solid #00204E; border-radius: 36px; background: rgba(255, 255, 255, 0.1);" id="' + uni.web_pages[0] + '" class=center >' + uni.name + '</a></li>';
                         $('#conlist').append(newButton);
                     })
                 }
@@ -140,6 +141,7 @@
             	$(".secondcontainer").show();
             	$('link[href="view1.css"]').attr('href','view2.css');
             	$("#uni-name").text($(this).text());
+            	$("#link").text($(this).attr('id'));
             	$(".header").html("<h1>Ratings and Reviews</h1><h4>for " + $(this).text() + " </h4>");
 
             });
@@ -174,7 +176,7 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Uoft_conhall.jpg">
                     <div id="uni-text">
                       <h3 id="uni-name"> <span style="background-color: rgba(0, 0, 0, 0.6)"> Filler Name </span></h3>
-											<p id='links'> @university <span style="color: blue"> www.webpage.edu </span> </p>
+											<p id='links'> @university <span id='link' style="color: blue"> www.webpage.edu </span> </p>
                       <p id="uni-info-wiki"> <span> Lorem ipsum dolor sit amet,
                         consectetur adipiscing elit. Nulla risus nunc, finibus
                         sed aliquet ut, eleifend in risus. Mauris elit massa,
@@ -189,22 +191,48 @@
             <div id="course-preview">
               <h3> Courses </h3>
               <div class="course">
-                <h4> CSC148 </h4>
+                <div>
+                  <h4> CSC148
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                 </h4>
+               </div>
+
                 <p>Abstract data types and data structures...</p>
                   <p class="quote">"Would not wish this course upon my worst enemy..."</p>
                   <p class="quote">"pretty good course. kinda useful. "</p>
               </div>
               <div class="course">
-                <h4> MGY200 </h4>
+                <div>
+                <h4> MGY200
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </h4>
                 <p>Introduction to the modern era of genetics and...</p>
                    <p class="quote">"Super nice prof! Don't buy the textbook."</p>
               </div>
+            </div>
               <div class="course">
-                <h4> PSY420 </h4>
+                <div>
+                <h4> PSY420
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </h4>
+
                 <p>Examination in depth of a limited topic within... </p>
 
                 <p class="quote">"Only take this course if it's with Sheila!!!"</p>
               </div>
+            </div>
 
             </div>
             <div id=button-container>
@@ -229,93 +257,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-<!-- header -->
-<div class="header">
-  <h1>Ratings and Reviews</h1>
-  <h4>for "insert university name" </h4>
-</div>
-
-<!-- Here, we will display 3 rating categories and its star rating;
-Reviews will appear when clicking on a category -->
-<div class="categories">
-    <!-- display 3 rating categories -->
-    <h3> Scored categories </h3>
-
-    <div id="category1"><button id="category1" class="btn"><span>Overall</span></button></div><br><br>
-    <div id="category2"><button id="category2" class="btn"><span>Campus</span></button></div><br><br>
-    <div id="category3"><button id="category3" class="btn"><span>Easiness</span></button></div><br><br>
-
-    <script>
-        // add stars to categories here
-
-
-        // since we have no backend yet, we will choose comments to display randomly from a list of reviews
-        var overallReviews = ["I really loved my time here because all the profs, and especially the TA's, were so nice. "];
-        var campusReviews = ["x100 a better looking campus than Waterloo", "Large campus, might take a while walk to your next class", "Lots of libraries and services on campus!", "pretty safe campus"];
-        var easinessReviews = ["It's only easy if you try.", "Don't come here, it's a trap", "Courses are killing me", "Ehhh, I'm a genius so I find everything easy", "Challenging..."];
-
-        var counter1 = 0;
-        $("#category1").click(function() {
-            var randInt = Math.floor((Math.random() * overallReviews.length) + 1);
-            if (counter1 == 0) {
-                $("#category1").append('<div class="erase" id="erase1">' + overallReviews[randInt - 1] +'</div>')
-                counter1++;
-            } else {
-                var element = document.getElementById("erase1");
-                element.parentNode.removeChild(element);
-                counter1 = 0;
-            }
-        });
-
-        var counter2 = 0;
-        $("#category2").click(function() {
-            var randInt = Math.floor((Math.random() * campusReviews.length) + 1);
-            if (counter2 == 0) {
-                $("#category2").append('<div class="erase" id="erase2">' + campusReviews[randInt - 1] +'</div>')
-                counter2++;
-            } else {
-                var element = document.getElementById("erase2");
-                element.parentNode.removeChild(element);
-                counter2 = 0;
-            }
-        });
-
-        var counter3 = 0;
-        $("#category3").click(function() {
-            var randInt = Math.floor((Math.random() * easinessReviews.length) + 1);
-            if (counter3 == 0) {
-                $("#category3").append('<div class="erase" id="erase3">' + easinessReviews[randInt - 1] +'</div>')
-                counter3++;
-            } else {
-                var element = document.getElementById("erase3");
-                element.parentNode.removeChild(element);
-                counter3 = 0;
-            }
-        });
-    </script>
-
-</div>
-
-<div class="moreCategories">
-    <h3> More categories to view </h3>
-
-    <div class="select">
-        <select>
-            <option>--Select--</option>
-            <option>Hello 1</option>
-            <option>Hello 2</option>
-            <option>Hello 3</option>
-            <option>Hello 4</option>
-        </select>
-        <div class="select_arrow">
-
+<div class="container3">
+        <div class="header">
+          <h1>Ratings and Reviews</h1>
+            <h3 id="uni-name"> <span> Filler Name </span></h3>
         </div>
     </div>
-    <!-- Here, we will display 3 rating categories and its star rating;
+    <!-- Here, we will display 3 rating categories and its star rating; 
     Reviews will appear when clicking on a category -->
 
     <div class="container3">
-        <div class="categories item">
+        <div class="categories item"> 
             <!-- display 3 rating categories -->
             <h3> Scored categories </h3>
 
@@ -336,7 +288,7 @@ Reviews will appear when clicking on a category -->
                             text += '&nbsp;&nbsp;&nbsp;'
                         }
                         text += '<span class="fa fa-star checked"></span>';
-                    }
+                    } 
                     for (i = 1; i <= numUncheckedStars; i++) {
                         text += '<span class="fa fa-star"></span>';
                     }
@@ -390,7 +342,7 @@ Reviews will appear when clicking on a category -->
         </div>
 
         <div class="moreCategories item">
-            <h3> More categories to view </h3>
+            <h3> More categories to view </h3> 
 
             <div class="select">
                 <select id="selectMe">
@@ -462,31 +414,14 @@ Reviews will appear when clicking on a category -->
                 <input class="textbox" type="text" name="comments" value="">
                 <br><br>
                 <button class="review-submit" type="submit" style="vertical-align:middle"><span>Submit </span></button>
-            </form>
+            </form> 
         </div>
-
-        <br>
-        <span class="rating">
-            <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1"/>
-            <label for="rating-input-1-5" class="rating-star"></label>
-            <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1"/>
-            <label for="rating-input-1-4" class="rating-star"></label>
-            <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1"/>
-            <label for="rating-input-1-3" class="rating-star"></label>
-            <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1"/>
-            <label for="rating-input-1-2" class="rating-star"></label>
-            <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1"/>
-            <label for="rating-input-1-1" class="rating-star"></label>
-	    </span>
-
-        <br>
-        Comments:<br>
-        <input class="textbox" type="text" name="comments" value="">
-        <br><br>
-        <input class="review-submit" type="submit" value="Submit">
-    </form>
-
-</div>
+        <script>
+            $('.review-submit').on('click', function() {
+                alert("Will be able to submit in A3");
+            })
+        </script>
+    </div>
 
 </div>
 </body>
