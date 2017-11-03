@@ -48,7 +48,18 @@
             color: whitesmoke;
             height: 6vh;
             font-size: 1.2em;
+            position: relative;
 
+        }
+        
+        #home {
+        	color: white;
+        	font-size: 1.2em;
+        	position: absolute;
+        	top: 0;
+        	right: 0;
+        	border: None;
+        	background: rgba(255, 255, 255, 0.1);
         }
 
         img.logo {
