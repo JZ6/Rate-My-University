@@ -29,17 +29,16 @@
     </div>
     <div class=center>
 
+        <label class="center" style="font-size:1.2em">Country of University:
 
-        <label class="center">Country of University:
-
-            <input name="Country Name" id="country" list="unis"/></label>
+            <input name="Country Name" id="country" style="font-size:1.2em" list="unis"/></label>
         <datalist id="unis"></datalist>
 
     </div>
 
     <div id="searchcenter">
         <div id='lookupname' style="display:none; margin: 1vh">
-            <input type="text" class=center id="unifilter" style="font-size:18pt" onkeyup="namelookup()"
+            <input type="text" class=center id="unifilter" style="font-size:1.5em" onkeyup="namelookup()"
                    placeholder="Search for a University..." title="Type Name">
         </div>
 
@@ -74,15 +73,16 @@
         function uniselect() {
             document.getElementById("getlist").innerHTML = "Universities in " + document.getElementById("country").value;
             var requrl = 'https://cors-anywhere.herokuapp.com/' + 'http://universities.hipolabs.com/search?country=' + document.getElementById("country").value;
+	    document.getElementById("conlist").innerHTML = "";
             jQuery('#lookupname').toggle('show');
             $.ajax({
                 type: 'GET',
                 url: requrl,
                 success: function (data) {
 
-                    $('#conlist').empty();
+                    
                     $.each(JSON.parse(data), function (i, uni) {
-                    	var newButton = '<li><a href="javascript:;" data-theme="b" data-role="button" class=center >' + uni.name + '</a></li>';
+                    	var newButton = '<li><a href="javascript:;" data-theme="b" data-role="button" style="border: 3px solid #00204E; border-radius: 36px; background: rgba(255, 255, 255, 0.1);" class=center >' + uni.name + '</a></li>';
                         $('#conlist').append(newButton);
                     })
                 }
