@@ -10,14 +10,55 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="view1.css">
+    <style>
+    	#banner {
+            background: midnightblue; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(#00204E, #000428); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(#00204E, #000428); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(#00204E, #000428); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(#00204E, #000428); /* Standard syntax (must be last) */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: whitesmoke;
+            height: 6vh;
+            font-size: 1.2em;
+            position: relative;
+
+        }
+        
+        #home {
+        	color: white;
+        	font-size: 1.2em;
+        	position: absolute;
+        	top: 0;
+        	right: 0;
+        	border: None;
+        	background: rgba(255, 255, 255, 0.1);
+        }
+    
+    </style>
 		
 		
 </head>
 <body>
 <div id=banner>
     <h1>Rate My University</h1>
-    <button id="home" type='button'> Home </button>
+    <button id="home"  type='button'> Home </button>
 </div>
+
+<script>
+	$("#home").click(function() {
+  		$(".secondcontainer").hide();
+    	$(".thirdcontainer").hide();
+    	$(".container").show();
+    	$("#conlist").empty();
+    	$('link').attr('href','view1.css');
+    	$("#country").val("");
+    	$('#lookupname').toggle('hide');
+    	
+  	});
+</script>
 
 
 
