@@ -10,8 +10,8 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="view1.css">
-		
-		
+
+
 </head>
 <body>
 <div id=banner>
@@ -51,7 +51,7 @@
 
     <ul id="conlist" class="dropdown-content">
     </ul>
-    
+
     <script>
     	$(".secondcontainer").hide();
     	$(".thirdcontainer").hide();
@@ -70,7 +70,7 @@
 
     <script>
         /*toggle dropdown content on click */
-        
+
         function uniselect() {
             document.getElementById("getlist").innerHTML = "Universities in " + document.getElementById("country").value;
             var requrl = 'https://cors-anywhere.herokuapp.com/' + 'http://universities.hipolabs.com/search?country=' + document.getElementById("country").value;
@@ -94,11 +94,11 @@
             	//alert($(this).text());
             	$("#uni-name").text($(this).text());
             	$(".header").html("<h1>Ratings and Reviews</h1><h4>for " + $(this).text() + " </h4>");
-            	
+
             });
             //document.getElementById("conlist").classList.show("show");
         }
-        
+
 
 
         function namelookup() {
@@ -117,8 +117,8 @@
                 }
             }
         }
-        
-    </script>	
+
+    </script>
 </div>
 
 <!-- Second page view -->
@@ -128,15 +128,14 @@
                   <div id="bkg-img-container">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Uoft_conhall.jpg">
                     <div id="uni-text">
-                      <h3 id="uni-name"> <span> Filler Name </span></h3>
+                      <h3 id="uni-name"> <span style="background-color: rgba(0, 0, 0, 0.6)"> Filler Name </span></h3>
+											<p id='links'> @university <span style="color: blue"> www.webpage.edu </span> </p>
                       <p id="uni-info-wiki"> <span> Lorem ipsum dolor sit amet,
                         consectetur adipiscing elit. Nulla risus nunc, finibus
                         sed aliquet ut, eleifend in risus. Mauris elit massa,
                         tincidunt sit amet erat convallis, posuere varius arcu.
                         Integer sed justo vel odio varius tincidunt non et est.
-                        Fusce convallis, sem in varius venenatis, lorem turpis
-                        lacinia ligula, quis tincidunt lectus sem ut metus.
-                        Donec sed elit viverra, commodo elit ut, mollis est. </span>
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -146,29 +145,18 @@
               <h3> Courses </h3>
               <div class="course">
                 <h4> CSC148 </h4>
-                <p>Abstract data types and data structures for implementing
-                  them. Linked data structures. Encapsulation and
-                  information-hiding. Object-oriented programming.
-                  Specifications. Analyzing the efficiency of programs.
-                  Recursion. </p>
+                <p>Abstract data types and data structures...</p>
                   <p class="quote">"Would not wish this course upon my worst enemy..."</p>
                   <p class="quote">"pretty good course. kinda useful. "</p>
               </div>
               <div class="course">
                 <h4> MGY200 </h4>
-                <p>Introduction to the modern era of genetics and microbiology,
-                  and its impact on human health.  Topical biological problems
-                  and cutting-edge scientific approaches with examples from
-                  world-class Toronto labs.  Topics include: combating HIV;
-                   emerging and recurring microbial threats; repairing spinal
-                   cord injury; cancer biology; power of stem cells; fountain
-                   of youth.</p>
+                <p>Introduction to the modern era of genetics and...</p>
                    <p class="quote">"Super nice prof! Don't buy the textbook."</p>
               </div>
               <div class="course">
                 <h4> PSY420 </h4>
-                <p>Examination in depth of a limited topic within social
-                  psychology. </p>
+                <p>Examination in depth of a limited topic within... </p>
 
                 <p class="quote">"Only take this course if it's with Sheila!!!"</p>
               </div>
@@ -179,7 +167,7 @@
             </div>
           </div>
   </div>
-  
+
   <script>
   	$("#button-container").click(function() {
   		$(".secondcontainer").hide();
@@ -193,33 +181,33 @@
 <!-- third page view -->
 <div class="thirdcontainer">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    
+
+
 <!-- header -->
 <div class="header">
   <h1>Ratings and Reviews</h1>
   <h4>for "insert university name" </h4>
 </div>
-    
-<!-- Here, we will display 3 rating categories and its star rating; 
+
+<!-- Here, we will display 3 rating categories and its star rating;
 Reviews will appear when clicking on a category -->
-<div class="categories"> 
+<div class="categories">
     <!-- display 3 rating categories -->
     <h3> Scored categories </h3>
-    
+
     <div id="category1"><button id="category1" class="btn"><span>Overall</span></button></div><br><br>
     <div id="category2"><button id="category2" class="btn"><span>Campus</span></button></div><br><br>
     <div id="category3"><button id="category3" class="btn"><span>Easiness</span></button></div><br><br>
-    
+
     <script>
         // add stars to categories here
-        
-        
+
+
         // since we have no backend yet, we will choose comments to display randomly from a list of reviews
         var overallReviews = ["I really loved my time here because all the profs, and especially the TA's, were so nice. "];
         var campusReviews = ["x100 a better looking campus than Waterloo", "Large campus, might take a while walk to your next class", "Lots of libraries and services on campus!", "pretty safe campus"];
         var easinessReviews = ["It's only easy if you try.", "Don't come here, it's a trap", "Courses are killing me", "Ehhh, I'm a genius so I find everything easy", "Challenging..."];
-        
+
         var counter1 = 0;
         $("#category1").click(function() {
             var randInt = Math.floor((Math.random() * overallReviews.length) + 1);
@@ -232,7 +220,7 @@ Reviews will appear when clicking on a category -->
                 counter1 = 0;
             }
         });
-        
+
         var counter2 = 0;
         $("#category2").click(function() {
             var randInt = Math.floor((Math.random() * campusReviews.length) + 1);
@@ -245,7 +233,7 @@ Reviews will appear when clicking on a category -->
                 counter2 = 0;
             }
         });
-        
+
         var counter3 = 0;
         $("#category3").click(function() {
             var randInt = Math.floor((Math.random() * easinessReviews.length) + 1);
@@ -259,12 +247,12 @@ Reviews will appear when clicking on a category -->
             }
         });
     </script>
-    
+
 </div>
 
 <div class="moreCategories">
-    <h3> More categories to view </h3> 
-    
+    <h3> More categories to view </h3>
+
     <div class="select">
         <select>
             <option>--Select--</option>
@@ -327,13 +315,13 @@ Reviews will appear when clicking on a category -->
             <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1"/>
             <label for="rating-input-1-1" class="rating-star"></label>
 	    </span>
-        
+
         <br>
         Comments:<br>
         <input class="textbox" type="text" name="comments" value="">
         <br><br>
         <input class="review-submit" type="submit" value="Submit">
-    </form> 
+    </form>
 </div>
 
 <script>
