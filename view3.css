@@ -16,6 +16,7 @@ body {
     /*flex-wrap: wrap;*/
     display:flex;
     width:90%;
+   max-height: 94vh
 }
 @media only screen and (max-width: 900px) { 
 /* Some CSS rules */    
