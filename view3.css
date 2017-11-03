@@ -1,3 +1,22 @@
+/* banner*/
+#banner {
+          background: midnightblue; /* For browsers that do not support gradients */
+          background: -webkit-linear-gradient(#00204E, #000428); /* For Safari 5.1 to 6.0 */
+          background: -o-linear-gradient(#00204E, #000428); /* For Opera 11.1 to 12.0 */
+          background: -moz-linear-gradient(#00204E, #000428); /* For Firefox 3.6 to 15 */
+          background: linear-gradient(#00204E, #000428); /* Standard syntax (must be last) */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: whitesmoke;
+          height: 6vh;
+          font-size: 1.0em;
+
+      }
+
+.container-everything {
+    max-height : 100vh;
+}
 
 /*    apply default font to everything except fa icons    */
 html *:not(.fa) 
@@ -6,9 +25,11 @@ html *:not(.fa)
 }
 
 /*    background image for page    */
+/*
 body {
     background-image: url("http://img03.deviantart.net/5774/i/2013/169/f/c/yellow_lined_paper_by_andie200-d69jqez.png");
 }
+*/
 
 .container {
     margin: auto;
@@ -16,7 +37,6 @@ body {
     /*flex-wrap: wrap;*/
     display:flex;
     width:90%;
-   max-height: 94vh
 }
 @media only screen and (max-width: 900px) { 
 /* Some CSS rules */    
@@ -29,29 +49,32 @@ body {
     height: 10em;
     justify-content: center;
     background-color:cornsilk;
-    padding: 20px;
-    padding-left: 10%;
-    margin: 8.7%;
+    padding-left: 5%;
+    margin: 10px;
+    flex-basis: 100%;
 }
 .categories {
     background-color: whitesmoke;
     padding: 10px;
     padding-left: 5%;
-    margin: 40px;
+    margin: 10px;
     flex-basis: 50%;
 }
 .moreCategories {
-    background-color:cornsilk;
+    background-color:whitesmoke;
     padding: 10px;
     padding-left: 5%;
-    margin: 40px;
+    margin: 10px;
     flex-basis: 50%;
 }
 .addReview {
-    background-color: whitesmoke;
+    background-color: cornsilk;
     padding: 20px;
     padding-left: 10%;
     margin: 8.7%;
+    padding-left: 5%;
+    margin: 10px;
+    flex-basis: 100%;
 }
 
 /* text styling */
@@ -79,7 +102,7 @@ button {
 }
         /*    this styles the review comments    */
 .erase {
-    width: 50%;
+    width: 70%;
     padding: 10px 10px;
     text-align: left;
     background-color: #ffe6b3;
@@ -88,7 +111,7 @@ button {
 }
 
 .more {
-    width: 50%;
+    width: 70%;
     padding: 10px 10px;
     text-align: left;
     background-color: #ffe6b3;
@@ -111,7 +134,7 @@ button {
     position: relative;
     display: inline-block;
     margin-bottom: 15px;
-    width: 30%;
+    width: 50%;
 }    .select select {
         font-family: 'Arial';
         display: inline-block;
@@ -141,7 +164,7 @@ button {
         }     
 .select_arrow {
     position: absolute;
-    top: 21px;
+    top: 15px;
     right: 21px;
     width: 0;
     height: 0;
