@@ -10,3 +10,11 @@ Using the [Universities List API](https://github.com/Hipo/university-domains-lis
 
 We intend on creating a web application for students from universities around the world to rate and review ctheir universities. The API is our source for the list of universities, and also provides domains and web pages for each of the universities. 
 
+Our page features three distinct views:
+In the main page, a user types in the country of their university (autofill available), and then a list of universities of that country is fetched via jquery from our designated API, and displayed in a list of buttons beneath the "get University" button. There is also a filter box that allows you to locate a university by its name. When a user clicks on a University name button, it brings them to the second view.
+
+In the second view:
+Displays chosen unvieristy's information, overview of ratings and review. There is a button called "see more reviews", which when clicked will bring them to the third and final view.
+
+In the third view:
+Displays more detailed infromation regarding the rating out of five and where it comes from. Also displays all comments and allows users to enter their own comment and ratings. (However, we dont have a back end so this feature will be fully working in A3)
