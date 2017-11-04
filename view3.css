@@ -24,7 +24,7 @@ html *:not(.fa)
 .header {
     height: 10em;
     justify-content: center;
-    background-color:cornsilk;
+    background-color:lightblue;
     padding-left: 5%;
     margin: 10px;
     flex-basis: 100%;
@@ -44,7 +44,7 @@ html *:not(.fa)
     flex-basis: 50%;
 }
 .addReview {
-    background-color: cornsilk;
+    background-color: lightblue;
     padding: 20px;
     padding-left: 10%;
     margin: 8.7%;
@@ -157,7 +157,7 @@ button {
     border-top-color: #CCCCCC;
 }
 
-/* for star ratings in 'write your own review' */
+/* for star ratings in 'write your own review', from https://codepen.io/vanslooten/pen/PGOQar */
 .rating {
     overflow: hidden;
     display: inline-block;
@@ -187,7 +187,7 @@ button {
     background: url('https://home.et.utwente.nl/slootenvanf/wp-content/plugins/fvs-peer-review/img/star.png') 0 -16px;
 }
 
-/*Submit button, from https://www.w3schools.com/csS/tryit.asp?filename=trycss_buttons_animate3*/
+/* Submit button, from https://www.w3schools.com/csS/tryit.asp?filename=trycss_buttons_animate3 */
 .review-submit {
   display: inline-block;
   border-radius: 4px;

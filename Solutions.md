@@ -17,7 +17,7 @@ In the second view:
 Displays chosen unvieristy's information, overview of ratings and review. There is a button called "see more reviews", which when clicked will bring them to the third and final view.
 
 In the third view:
-Displays more detailed infromation regarding the rating out of five and where it comes from. Also displays all comments and allows users to enter their own comment and ratings. (However, we dont have a back end so this feature will be fully working in A3)
+Displays more detailed information regarding the rating out of five and where it comes from. Also displays all comments and allows users to enter their own comment and ratings. (However, we dont have a back end so this feature will be fully working in A3; currently we are randomly generating comments from a list of comments)
 
 ## End-User:
 This website is intended for currently enrolled university students as well as potential younger students who might be looking into which university they want to attend. The currently enrolled students will be able to write down reviews regarding their experiences pertaining to their own universities, while younger students will be able to view these reviews to make an educated decision as to which university they should attend to.
