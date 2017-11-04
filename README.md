@@ -1,5 +1,3 @@
-# Link to index.html visualized : https://jz6.github.io/assignment-2-get-restful/
-
 # Assignment 2: The Front-end
 
 In this assignment, you are responsible for building a front-end for your web application. You will build on top of your first assignment, and present the data retrieved from the API(s) you have found.  
