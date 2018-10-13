@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en-CA	">
+<head>
+    <meta charset="utf-8">
+    <title>Rate My University</title>
+    <meta name="description" content="University ratings">
+    <meta name="author" content="JZ">
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="view1.css">
+    
+    <!-- style for banner for our website -->
+    <style>
+    	#banner {
+            background: midnightblue; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(#00204E, #000428); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(#00204E, #000428); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(#00204E, #000428); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(#00204E, #000428); /* Standard syntax (must be last) */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: whitesmoke;
+            height: 6vh;
+            font-size: 1.2em;
+            position: relative;
+
+        }
+
+        #home {
+        	color: white;
+        	font-size: 1.2em;
+        	position: absolute;
+        	top: 0;
+        	right: 0;
+		height: 6vh;
+        	border: None;
+        	background: rgba(255, 255, 255, 0.1);
+        }
+
+    </style>
+
+
+</head>
+<body>
+<div id=banner>
+    <h1>Rate My University</h1>
+    <button id="home"  type='button'> Home </button>
+</div>
+
+<!-- script for our home button, which sends the user back to the first view -->
+<script>
+	$("#home").click(function() {
+  		$(".secondcontainer").hide();
+    	$(".thirdcontainer").hide();
+    	$(".container").show();
+    	$("#conlist").empty();
+    	$('link').attr('href','view1.css');
+    	$("#country").val("");
+	    $("#unifilter").val("");
+    	$('#lookupname').toggle('hide');
+
+  	});
+</script>
+
+
+<!-- first view -->
+<div class="container">
+    <div style="margin: auto; text-align: center;">
+        <img class="logo"
+             src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1024px-Utoronto_coa.svg.png">
+        <p>
+            Higher Education for A Higher Mind.
+        </p>
+    </div>
+    <div class=center>
+
+        <label class="center" style="font-size:1.2em">Country of University:
+
+            <input name="Country Name" id="country" style="font-size:1.2em" list="unis"/></label>
+        <datalist id="unis"></datalist>
+
+    </div>
+
+    <div id="searchcenter">
+        <div id='lookupname' style="display:none; margin: 1vh">
+            <input type="text" class=center id="unifilter" style="font-size:1.5em" onkeyup="namelookup()"
+                   placeholder="Search for a University..." title="Type Name">
+        </div>
+
+        <div class="dropdown">
+            <button onclick="uniselect()" id="getlist" class="dropbtn">Get Universities</button>
+        </div>
+    </div>
+
+
+    <ul id="conlist" class="dropdown-content">
+    </ul>
+
+    <script>
+    	$(".secondcontainer").hide();
+    	$(".thirdcontainer").hide();
+    </script>
+
+    <script type="text/javascript">
+        var currentunis = ["Canada", "United States", "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cruise Ship", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyz Republic", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre &amp; Miquelon", "Samoa", "San Marino", "Satellite", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "St Kitts &amp; Nevis", "St Lucia", "St Vincent", "St. Lucia", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad &amp; Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks &amp; Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"];
+
+        var unilist = '';
+
+        for (var i = 0; i < currentunis.length; i++)
+            unilist += '<option value="' + currentunis[i] + '">';
+
+        document.getElementById('unis').innerHTML = unilist;
+    </script>
+
+    <script>
+        /*toggle dropdown content on click */
+
+        function uniselect() {
+            document.getElementById("getlist").innerHTML = "Universities in " + document.getElementById("country").value;
+            var requrl = 'https://cors-anywhere.herokuapp.com/' + 'http://universities.hipolabs.com/search?country=' + document.getElementById("country").value;
+	    	document.getElementById("conlist").innerHTML = "";
+            jQuery('#lookupname').toggle('show');
+            $.ajax({
+                type: 'GET',
+                url: requrl,
+                success: function (data) {
+
+
+                    $.each(JSON.parse(data), function (i, uni) {
+                    	var newButton = '<li><a href="javascript:;" data-theme="b" data-role="button" style="border: 3px solid #00204E; border-radius: 36px; background: rgba(255, 255, 255, 0.1);" id="' + uni.web_pages[0] + '" class=center >' + uni.name + '</a></li>';
+                        $('#conlist').append(newButton);
+                    })
+                }
+            });
+            /* sends the user to the second view page after clicking on a university name */
+            $(document).on("click", "a.center", function(){
+            	$(".container").hide();
+            	$(".secondcontainer").show();
+            	$('link[href="view1.css"]').attr('href','view2.css');
+            	$("#uni-name").text($(this).text());
+            	$("#link").text($(this).attr('id'));
+            	$(".header").html("<h1>Ratings and Reviews</h1><h4>for " + $(this).text() + " </h4>");
+
+            });
+        }        
+
+		/* university filter */
+        function namelookup() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("unifilter");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("conlist");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+
+                }
+            }
+        }
+
+    </script>
+</div>
+
+<!-- Second page view -->
+<div class="secondcontainer">
+	<div id="view2">
+          <div id="info-pane">
+                  <div id="bkg-img-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Uoft_conhall.jpg">
+                    <div id="uni-text">
+                      <h3 id="uni-name"> <span style="background-color: rgba(0, 0, 0, 0.6)"> Filler Name </span></h3>
+											<p id='links'> @university <span id='link' style="color: blue"> www.webpage.edu </span> </p>
+                      <p id="uni-info-wiki"> <span> Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Nulla risus nunc, finibus
+                        sed aliquet ut, eleifend in risus. Mauris elit massa,
+                        tincidunt sit amet erat convallis, posuere varius arcu.
+                        Integer sed justo vel odio varius tincidunt non et est.
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+          </div>
+          <div id="review-pane">
+            <div id="course-preview">
+              <h3> Courses </h3>
+              <div class="course">
+                <div>
+                  <h4> CSC148
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                 </h4>
+               </div>
+
+                <p>Abstract data types and data structures...</p>
+                  <p class="quote">"Would not wish this course upon my worst enemy..."</p>
+                  <p class="quote">"pretty good course. kinda useful. "</p>
+              </div>
+              <div class="course">
+                <div>
+                <h4> MGY200
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </h4>
+                <p>Introduction to the modern era of genetics and...</p>
+                   <p class="quote">"Super nice prof! Don't buy the textbook."</p>
+              </div>
+            </div>
+              <div class="course">
+                <div>
+                <h4> PSY420
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </h4>
+
+                <p>Examination in depth of a limited topic within... </p>
+
+                <p class="quote">"Only take this course if it's with Sheila!!!"</p>
+              </div>
+            </div>
+
+            </div>
+            <div id=button-container>
+              <button id="to-view3" type='button'> See more reviews </button>
+            </div>
+          </div>
+  </div>
+
+  <script>
+  	/* sends the user to the third page view */
+  	$("#button-container").click(function() {
+  		$(".secondcontainer").hide();
+        $(".thirdcontainer").show();
+        $('link[href="view2.css"]').attr('href','view3.css');
+  	});
+  </script>
+</div>
+
+
+<!-- third page view -->
+<div class="thirdcontainer">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<div class="container3">
+        <div class="header">
+          <h1>Ratings and Reviews</h1>
+            <h3 id="uni-name"> <span> Filler Name </span></h3>
+        </div>
+    </div>
+    <!-- Here, we will display 3 rating categories and its star rating; 
+    Reviews will appear when clicking on a category -->
+
+    <div class="container3">
+        <div class="categories item"> 
+            <!-- display 3 rating categories -->
+            <h3> Scored categories </h3>
+
+            <div id="category1"><button id="category1" class="btn"><span>Overall</span></button></div><br>
+            <div id="category2"><button id="category2" class="btn"><span>Campus</span></button></div>
+            <br>
+            <div id="category3"><button id="category3" class="btn"><span>Easiness</span></button></div><br><br>
+
+            <script>
+                // add stars to categories here; for A2 this will be randomly generated
+                for (c = 1; c <= 3; c++) {
+                    var numCheckedStars = Math.floor((Math.random() * 5) + 1); //get random num from 1-5
+                    var numUncheckedStars = 5 - numCheckedStars;
+                    var text = '';
+
+                    for (i = 1; i <= numCheckedStars; i++) {
+                        if (i == 1) {
+                            text += '&nbsp;&nbsp;&nbsp;'
+                        }
+                        text += '<span class="fa fa-star checked"></span>';
+                    } 
+                    for (i = 1; i <= numUncheckedStars; i++) {
+                        text += '<span class="fa fa-star"></span>';
+                    }
+                    var appendName = "#category" + c;
+                    $(appendName).append(text);
+                }
+                // since we have no backend yet, we will choose comments to display randomly from a list of reviews
+                var overallReviews = ["I really loved my time here because all the profs, and especially the TA's, were so nice. "];
+                var campusReviews = ["x100 a better looking campus than Waterloo", "Large campus, might take a while walk to your next class", "Lots of libraries and services on campus!", "pretty safe campus"];
+                var easinessReviews = ["It's only easy if you try.", "Don't come here, it's a trap", "Courses are killing me", "Ehhh, I'm a genius so I find everything easy", "Challenging..."];
+
+                var counter1 = 0;
+                $("#category1").click(function() {
+                    var randInt = Math.floor((Math.random() * overallReviews.length) + 1);
+                    if (counter1 == 0) {
+                        $("#category1").append('<div class="erase" id="erase1">' + overallReviews[randInt - 1] +'</div>')
+                        counter1++;
+                    } else {
+                        var element = document.getElementById("erase1");
+                        element.parentNode.removeChild(element);
+                        counter1 = 0;
+                    }
+                });
+
+                var counter2 = 0;
+                $("#category2").click(function() {
+                    var randInt = Math.floor((Math.random() * campusReviews.length) + 1);
+                    if (counter2 == 0) {
+                        $("#category2").append('<div class="erase" id="erase2">' + campusReviews[randInt - 1] +'</div>')
+                        counter2++;
+                    } else {
+                        var element = document.getElementById("erase2");
+                        element.parentNode.removeChild(element);
+                        counter2 = 0;
+                    }
+                });
+
+                var counter3 = 0;
+                $("#category3").click(function() {
+                    var randInt = Math.floor((Math.random() * easinessReviews.length) + 1);
+                    if (counter3 == 0) {
+                        $("#category3").append('<div class="erase" id="erase3">' + easinessReviews[randInt - 1] +'</div>')
+                        counter3++;
+                    } else {
+                        var element = document.getElementById("erase3");
+                        element.parentNode.removeChild(element);
+                        counter3 = 0;
+                    }
+                });
+            </script>
+        </div>
+
+        <div class="moreCategories item">
+            <h3> More categories to view </h3> 
+
+            <div class="select">
+                <select id="selectMe">
+                    <option>Select</option>
+                    <option value="category4">Food</option>
+                    <option value="category5">Happiness</option>
+                    <option value="category6">Professors</option>
+                    <option value="category7">TA's</option>
+                </select>
+                <div class="select_arrow">
+                </div>
+            </div>
+
+            <!-- some harded-coded reviews, only for A2 -->
+            <div class="category4 more" id="review">Liked it</div>
+            <div class="category4 more" id="review">A bit bland</div>
+            <div class="category4 more" id="review">Not too many choices</div>
+            <div class="category5 more" id="review">Could be better</div>
+            <div class="category6 more" id="review">CSC309 is the best course ever! Take it when Prof Gonzalez is teaching.</div>
+            <div class="category6 more" id="review">My profs are great, especially for CSC309!</div>
+            <div class="category7 more" id="review">The TA's are some of the nicest people ever (in the whole world). </div>
+            <div class="category7 more" id="review">Other qualities they have include: compassion, generosity, hardworking, and motivational.</div>
+
+            <!-- JS to toggle visibility for reviews -->
+            <script type="text/javascript">
+                $(document).ready(function () {
+                  $('.more').hide();
+                  $('#selectMe').change(function () {
+                    $('.more').hide();
+                    $('.'+$(this).val()).show();
+                  })
+                });
+            </script>
+        </div>
+    </div>
+
+    <div class="container3">
+        <div class="addReview">
+            <h3> Write your own review </h3>
+
+            <form>
+                <div class="select">
+                    <select id="selectMe">
+                        <option>Select</option>
+                        <option value="category4">Food</option>
+                        <option value="category5">Happiness</option>
+                        <option value="category6">Professors</option>
+                        <option value="category7">TA's</option>
+                    </select>
+                    <div class="select_arrow">
+                    </div>
+                </div>
+                <br>
+                <span class="rating">
+                    <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1"/>
+                    <label for="rating-input-1-5" class="rating-star"></label>
+                    <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1"/>
+                    <label for="rating-input-1-4" class="rating-star"></label>
+                    <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1"/>
+                    <label for="rating-input-1-3" class="rating-star"></label>
+                    <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1"/>
+                    <label for="rating-input-1-2" class="rating-star"></label>
+                    <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1"/>
+                    <label for="rating-input-1-1" class="rating-star"></label>
+                </span>
+
+                <br><br>
+                Comments:<br>
+                <input class="textbox" type="text" name="comments" value="">
+                <br><br>
+                <button class="review-submit" type="submit" style="vertical-align:middle"><span>Submit </span></button>
+            </form> 
+        </div>
+        <script>
+            $('.review-submit').on('click', function() {
+                alert("Will be able to submit in A3");
+            })
+        </script>
+    </div>
+
+</div>
+</body>
+</html>

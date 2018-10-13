@@ -1,49 +1,24 @@
-# Assignment 1
-Due Date: October 6
+# Assignment 2: The Front-end
 
-## Overview:
-The goal of this assignment is to learn git, research public REST APIs and get data from the APIs. We are using GitHub Classroom for purposes of setting up and marking the assignments. This assignment will be a stepping stone towards the final project of this course.
+In this assignment, you are responsible for building a front-end for your web application. You will build on top of your first assignment, and present the data retrieved from the API(s) you have found.  
 
-## Requirements:
-- Choose a REST API and provide a project proposal
-- Setup a GitHub account and clone the starter repository
-- Write three functions demonstrating the use of a public API
-- Submit a SOLUTIONS.md in the expected format
+The assignment sits here: https://classroom.github.com/g/jZjBSSlY. 
 
-## Instructions:
-### Choose a REST API and provide a project proposal
-Select a public facing REST API. You can take a look at this comprehensive list of APIS here (https://github.com/toddmotto/public-apis). Please use an API **not** requiring OAuth authentication.
+## Specifications:
+Given that every group is using different API(s) and has a different end-product in mind, you are responsible for defining a reasonable scope for your web-application. Here are a few standard guidelines that you are expected to adhere to:
 
-Your project proposal should be a 2-3 lines description of how you plan on using the selected API in building a web application. You should also describe why your API qualifies as RESTful.
+- The application should be a one-page responsive, web application with at least three distinct views that a user can navigate through. 
+- Most user interactions will be handled on the front-end and resolved by javascript running in the browser.  While you are allowed to send requests to 3rd-party API servers, you are not allowed to implement functionality in your own server.
+- The submission of this assignment should include most of the (front-end) features you intend on demoing for your final project. (Assignment 3 will mostly focus on building a back-end for your application).
+- The file index.html will be the entry-point for the TAs marking your project. They will open that file from their local machine and expect everything to work.  No server-side code will be tested/launched during the evaluation process.
+- Include a Solutions.md explaining the features of your web application, the end-user and how s/he might use it.
+- You are expected to work in the same teams as Assignment 1, unless a TA contacted you with a change of teams.
+- The deadline for this assignment is Nov 4, 2017. The last commit before 2:00 PM on that date will be used for marking the assignment. If you plan on submitting the assignment late (refer course information for more details), you should include that in your Solutions.md.
 
-### Setup a GitHub account and clone the starter repository
+If you plan on deviating from these guidelines, talk to the prof or a TA and include an Instructions.md explaining your decision.
 
-The Assignment sits here: https://classroom.github.com/g/oIBwNf7U. Use the following instructions:
-- Click on the link above
-- Sign into GitHub or create a new account
-- As this is a group assignment, you and your teammates will be joining the same group. Sync up with one another to come up with a cool name (extra brownie points up for grabs). One teammate will create the team, and every other teammate must join the team.
-- Github classroom will clone the starter repository for this assignment. (Note: This may take 5-10 seconds).
-- You will now have access to a repository called FallCSC309/assignment-1-team-(team-name)
-- Clone this repository on a local machine. (https://help.github.com/articles/cloning-a-repository/)
-- Make changes to main.js and SOLUTIONS.md
-- Once you are done with your changes, push them to the remote repository (https://help.github.com/articles/pushing-to-a-remote/). 
-- The last commit before the deadline will be used to mark the assignment.
-
-
-
-### Write three functions demonstrating the use of a public API
-In this assignment, you need to implement 3 Javascript functions in main.js play with the public API you choose. There would be 3 functions in main.js to implement.
-
-- getListsOfItems: Find a RESTFUL API and use GET to retrive a list of items.
-- getOneItemById: Retrieve a single item by id based on the list you get from GET.
-- getOneAttributeFromItem: Return any attribute from the retrieved item. 
-
-### Submit a SOLUTIONS.md in the expected format
-Edit the SOLUTIONS.md to add your names and student IDs. You will also include the project description here.
-
-## Resources and Tips
-- A very good Git tutorial sits here: https://try.github.io/
-- If you and your team are making simultaneous changes to this repository, it is recommended that you use branches.
-- If you run into any problems, post it on Piazza and add the tag project to it.
-
+## Additional Notes:
+- You will (probably) be using jQuery/AJAX to talk to your API, display/manipulate your data and make it interactive for a user.  Be mindful that interacting with 3rd party APIs leads to some security concerns which some APIs may not support.  
+- You are not required to use a web framework like AngularJS or a library like React. However, you have the freedom to use what you want to build your user interfaces as long as you abide to the specifications above.  
+- You will be marked on the functionality of your application, its style and usability, its responsiveness, code quality and structure, and how well the application serves your end-user.
 
