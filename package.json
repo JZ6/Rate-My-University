@@ -1,23 +1,26 @@
 {
-  "name": "assignment-1-get-restful",
+  "name": "sample",
   "version": "1.0.0",
-  "description": "Due Date: October 6",
-  "main": "main.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FallCSC309/assignment-1-get-restful.git"
-  },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/FallCSC309/assignment-1-get-restful/issues"
-  },
-  "homepage": "https://github.com/FallCSC309/assignment-1-get-restful#readme",
   "dependencies": {
-    "request": "^2.83.0"
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "mongodb": "^2.2.33",
+    "request": "^2.83.0",
+    "sweetalert": "^2.0.8",
+    "window-popup": "^1.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
   }
 }

@@ -1,24 +1,14 @@
-# Assignment 2: The Front-end
+# [University-Course-Ratings](https://dry-cliffs-90706.herokuapp.com/)
 
-In this assignment, you are responsible for building a front-end for your web application. You will build on top of your first assignment, and present the data retrieved from the API(s) you have found.  
+Using the Universities List API to create a website that provide a platform for students to rate their universities based on numerous factors such as: diffuclty, campus life, education.
 
-The assignment sits here: https://classroom.github.com/g/jZjBSSlY. 
+We intend on creating a web application for students from universities around the world to rate and review ctheir universities. The API is our source for the list of universities, and also provides domains and web pages for each of the universities.
 
-## Specifications:
-Given that every group is using different API(s) and has a different end-product in mind, you are responsible for defining a reasonable scope for your web-application. Here are a few standard guidelines that you are expected to adhere to:
+Our page features three distinct views: In the main page, a user types in the country of their university (autofill available), and then a list of universities of that country is fetched via jquery from our designated API, and displayed in a list of buttons beneath the "get University" button. There is also a filter box that allows you to locate a university by its name. When a user clicks on a University name button, it brings them to the second view.
 
-- The application should be a one-page responsive, web application with at least three distinct views that a user can navigate through. 
-- Most user interactions will be handled on the front-end and resolved by javascript running in the browser.  While you are allowed to send requests to 3rd-party API servers, you are not allowed to implement functionality in your own server.
-- The submission of this assignment should include most of the (front-end) features you intend on demoing for your final project. (Assignment 3 will mostly focus on building a back-end for your application).
-- The file index.html will be the entry-point for the TAs marking your project. They will open that file from their local machine and expect everything to work.  No server-side code will be tested/launched during the evaluation process.
-- Include a Solutions.md explaining the features of your web application, the end-user and how s/he might use it.
-- You are expected to work in the same teams as Assignment 1, unless a TA contacted you with a change of teams.
-- The deadline for this assignment is Nov 4, 2017. The last commit before 2:00 PM on that date will be used for marking the assignment. If you plan on submitting the assignment late (refer course information for more details), you should include that in your Solutions.md.
+In the second view: Displays chosen unvieristy's information, overview of ratings and review. There is a button called "see more reviews", which when clicked will bring them to the third and final view.
 
-If you plan on deviating from these guidelines, talk to the prof or a TA and include an Instructions.md explaining your decision.
+In the third view: Displays more detailed information regarding the rating out of five and where it comes from. Also displays all comments and allows users to enter their own comment and ratings. (However, we dont have a back end so this feature will be fully working in A3; currently we are randomly generating comments from a list of comments)
 
-## Additional Notes:
-- You will (probably) be using jQuery/AJAX to talk to your API, display/manipulate your data and make it interactive for a user.  Be mindful that interacting with 3rd party APIs leads to some security concerns which some APIs may not support.  
-- You are not required to use a web framework like AngularJS or a library like React. However, you have the freedom to use what you want to build your user interfaces as long as you abide to the specifications above.  
-- You will be marked on the functionality of your application, its style and usability, its responsiveness, code quality and structure, and how well the application serves your end-user.
-
+End-User:
+This website is intended for currently enrolled university students as well as potential younger students who might be looking into which university they want to attend. The currently enrolled students will be able to write down reviews regarding their experiences pertaining to their own universities, while younger students will be able to view these reviews to make an educated decision as to which university they should attend to.
